@@ -1,10 +1,12 @@
-# qubit-note: Container Design Patterns for Distributed Systems
+# Container Design Patterns for Distributed Systems
 
+::: {.callout-warning title="Work in progress"}
+This note is a stub.
+:::
 
 ## Overview
 
-This note is edited from <a href="https://blog.bytebytego.com/p/container-design-patterns-for-distributed?publication_id=817132&post_id=196735247&isFreemail=true&r=2dtdi1&triedRedirect=true">Container Design Patterns for Distributed Systems</a>
-
+This note is based on [Container Design Patterns for Distributed Systems](https://blog.bytebytego.com/p/container-design-patterns-for-distributed) [1]. It will cover the following patterns:
 
 - The sidecar pattern
 - The adapter pattern
@@ -13,7 +15,6 @@ This note is edited from <a href="https://blog.bytebytego.com/p/container-design
 - The work queue pattern
 - The scatter/gather pattern
 
-
 ## References
 
-1. <a href="https://blog.bytebytego.com/p/container-design-patterns-for-distributed?publication_id=817132&post_id=196735247&isFreemail=true&r=2dtdi1&triedRedirect=true">Container Design Patterns for Distributed Systems</a>
+1. [Container Design Patterns for Distributed Systems](https://blog.bytebytego.com/p/container-design-patterns-for-distributed), ByteByteGo

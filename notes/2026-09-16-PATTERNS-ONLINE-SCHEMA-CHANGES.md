@@ -1,1 +1,5 @@
-# qubit-note: Distributed Systems | Databases & Storage | Patterns for Online Schema Changes
+# Patterns for Online Schema Changes
+
+::: {.callout-warning title="Work in progress"}
+This note has not been written yet.
+:::

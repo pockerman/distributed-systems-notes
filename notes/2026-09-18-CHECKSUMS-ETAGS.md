@@ -1,17 +1,26 @@
-# qubit-note: Distributed Systems | Databases & Storage | Checksums & Etags
+# Checksums & ETags
 
+::: {.callout-warning title="Work in progress"}
+This note is incomplete.
+:::
 
 ## Overview
 
-Checksums are short digital fingerprints of data used to verify integrity, and ETags (entity tags) are unique identifiers often derived from checksums or hashes that web and storage systems use to track data versions and detect changes.
+Checksums are short digital fingerprints of data used to verify its integrity. ETags (entity tags) are identifiers, often derived from checksums or hashes, that web and storage systems use to track versions of a resource and detect changes.
 
-What Is a Checksum? (Data Integrity Basics)
-A checksum is a small code calculated from a block of digital data to detect errors or alterations. By recomputing the checksum later and comparing it to the original value, you can verify whether the data has changed.
+## What is a checksum?
 
-If the checksums match, the data is almost certainly unaltered.
+A checksum is a small value calculated from a block of data in order to detect errors or alterations. By recomputing the checksum later and comparing it with the original value, you can verify whether the data has changed.
+If the checksums match, the data is very likely unaltered.
 
-Checksums are widely used for data integrity in storage and transmission, for example, to ensure a file wasn’t corrupted during download or to detect disk errors. They don’t by themselves prove authenticity (i.e. who created the data), but they excel at catching accidental corruption.
+Checksums are widely used to ensure data integrity in storage and transmission, e.g. to make sure a file wasn't corrupted during a download, or to detect disk errors. They don't by themselves prove authenticity (i.e. who created the data); for that, you need a cryptographic signature or a MAC. But they are excellent at catching accidental corruption.
 
-Common checksum algorithms range from simple ones (like parity bits or summing bytes) to more complex hash functions.
+Checksum algorithms range from simple ones, like parity bits or sums of bytes, to error-detecting codes such as CRC32, to cryptographic hash functions such as SHA-256.
+Cryptographic hash functions have the avalanche property: changing even a single bit of the input produces a completely different output. Simpler checksums don't have this property, but they are designed so that common errors, such as single-bit flips or burst errors in the case of CRCs, are guaranteed to change the checksum.
 
-Good checksum algorithms change significantly even if the input data changes only a little. This property means even a one-bit error in the data will result in a very different checksum value, alerting us to corruption.
+<!-- TODO: ETags (strong vs weak, If-None-Match / If-Match, conditional requests, optimistic concurrency), checksums in storage systems (e.g. S3 ETags, end-to-end checksums). -->
+
+## References
+
+1. [Checksum](https://en.wikipedia.org/wiki/Checksum)
+2. [HTTP ETag](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag), MDN Web Docs

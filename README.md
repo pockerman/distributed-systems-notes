@@ -1,75 +1,103 @@
 # Distributed Systems Notes
 
+Notes on designing distributed systems, published as a [Quarto](https://quarto.org/) book with [Hypothesis](https://web.hypothes.is/) annotations enabled on every page.
 
-## Distributed systems
+## Building the book
 
-### Intro
+You need [Quarto](https://quarto.org/docs/get-started/) installed.
 
-- <a href="notes/2026-02-24-part-1-Intro.md">Introduction to Distributed Systems</a>
-- <a href="notes/2026-03-09-part-2-Challenges.md">Challenges in Distributed Systems</a>
-- <a href="notes/2026-05-09-Distributed-Systems-Design-Concepts-Part-1.md">Design Concepts Part 1</a> 
-- <a href="notes/2026-05-10-Distributed-Systems-Design-Concepts-Part-2.md">Design Concepts Part 2</a>
+```bash
+quarto render          # builds the book into _book/
+./preview.sh           # live preview at http://localhost:4322/
+```
+
+The chapters and their order are defined in [`_quarto.yml`](_quarto.yml). Unfinished notes are listed under `project.render` with a `!` prefix so they are not rendered; when a note is ready, remove that line and add it to the chapters.
+
+## Contents
+
+### Introduction
+
+- [Part 1 | Introduction to Distributed Systems](notes/2026-02-24-part-1-Intro.md)
+- [Part 2 | Challenges in Distributed Systems](notes/2026-03-09-part-2-Challenges.md)
+- [Design Concepts Part 1](notes/2026-05-09-Distributed-Systems-Design-Concepts-Part-1.md)
+- [Design Concepts Part 2](notes/2026-05-10-Distributed-Systems-Design-Concepts-Part-2.md)
 
 ### Networking & Communication
 
-- <a href="notes/2026-08-05-HTTP-1-2-3.md">HTTP/1.1, HTTP/2 & HTTP/3</a>
-- <a href="notes/2026-04-09-Part-8-HTTP.md">HTTP</a>
-- <a href="notes/2026-04-09-Part-7-API.md">APIs</a>
-- <a href="notes/2025-04-18-part-6-domain-name-system.md">Domain Name System</a> 
-- <a href="notes/2026-08-04-FWD-PROXY-REVERSE-PROXY-NAT.md">Forward Proxy, Reverse Proxy & NAT</a>
-- <a href="notes/2026-04-06-Part-5-TLS-101.md">TLS 101</a>
-- <a href="notes/2026-03-17-part-4-TCP_101.md">TCP 101</a>
-- <a href="notes/2026-07-31-TCP-UDP-QUIC.md">TCP, UDP & QUIC</a>
-- <a href="notes/2026-03-16-part-3-OSI_MODEL.md">Inter Process Communication</a>
-- <a href="notes/2025-08-11-sharded-counters.md">Sharded Counters</a>
+- [Part 3 | Inter-Process Communication](notes/2026-03-16-part-3-OSI_MODEL.md)
+- [Part 4 | TCP 101](notes/2026-03-17-part-4-TCP_101.md)
+- [Part 5 | TLS 101](notes/2026-04-06-Part-5-TLS-101.md)
+- [Part 6 | Domain Name System](notes/2025-04-18-part-6-domain-name-system.md)
+- [Part 7 | APIs](notes/2026-04-09-Part-7-API.md)
+- [Part 8 | HTTP](notes/2026-04-09-Part-8-HTTP.md)
+- [HTTP/1.1, HTTP/2 & HTTP/3](notes/2026-08-05-HTTP-1-2-3.md)
+- [TCP, UDP & QUIC](notes/2026-07-31-TCP-UDP-QUIC.md)
+- [Forward Proxy, Reverse Proxy & NAT](notes/2026-08-04-FWD-PROXY-REVERSE-PROXY-NAT.md)
 
-### Scalabiltiy & Caching
+### Scalability & Caching
 
-- <a href="notes/2026-05-18-Scalability-Little-Law.md">Little’s Law</a>
-- <a href="notes/2026-01-20-Caching.md">Caching Methods</a>
-- <a href="notes/2026-01-21-cache-coherency.md">Cache Coherence</a>
-- <a href="notes/2026-01-26-Cache-Replacement.md">Cache Replacement</a>
-- <a href="notes/2026-04-28-Negative-Caching.md">Negative Caching</a>
-- <a href="notes/2026-06-08-Scalability-Message-Delivery-Semantics.md">Scalability | Message Delivery Semantics</a>
-- <a href="notes/2025-12-30-state-machine-replication.md">Scalability | State Machine Replication</a>
-- <a href="notes/2026-05-31-Scalability-Hashing-Strategies.md">Scalability | Hashing Strategies</a>
-- <a href="notes/2026-05-20-Scalability-Cold-Warm-Starts.md">Cold & Warm Starts</a>
-- <a href="notes/2026-01-05-broadcast-protocols.md">Broadcast Protocols</a>
+- [Little's Law](notes/2026-05-18-Scalability-Little-Law.md)
+- [Cold & Warm Starts](notes/2026-05-20-Scalability-Cold-Warm-Starts.md)
+- [Sharded Counters](notes/2025-08-11-sharded-counters.md)
+- [Caching Part 1 | Caching Methods](notes/2026-01-20-Caching.md)
+- [Caching Part 2 | Cache Coherence](notes/2026-01-21-cache-coherency.md)
+- [Caching Part 3 | Cache Replacement](notes/2026-01-26-Cache-Replacement.md)
+- [Caching Part 4 | Negative Caching](notes/2026-04-28-Negative-Caching.md)
+
+### Replication & Partitioning
+
+- [Data Replication Part 1 | Replication Strategies](notes/2025-04-22-data-replication.md)
+- [Data Replication Part 2 | Consistency Models](notes/2025-04-28-consistency-models.md)
+- [Data Replication Part 3 | State Machine Replication](notes/2025-12-30-state-machine-replication.md)
+- [Data Replication Part 4 | Consensus](notes/2025-12-31-consensus.md)
+- [Data Replication Part 6 | PACELC, CAP and CALM Theorems](notes/2026-01-06-pacelc-cap-calm-theorems.md)
+- [Common Conflict Resolution Strategies](notes/2026-06-29-Common-Conflict-Resolution-Strategies.md)
+- [Read Repair, Hinted Handoff & Anti-entropy](notes/2026-07-01-Read-Repair-Hinted-Handoff-Anti-entropy-Eventually-Consistent-Systems.md)
+- [Partitioning](notes/2025-08-04-partitioning.md)
 
 ### Databases & Storage
 
-- <a href="notes/2026-09-21-STORAGE-TIERS.md">Hot, Warm, Cold, and Archive Storage Tiers</a>
-- <a href="notes/2026-09-18-CHECKSUMS-ETAGS.md">Checksums & Etags</a>
-- <a href="notes/2026-09-17-CONTENT-STORAGE-LOCATION-STORAGE.md">Content‑Addressable Storage & Location‑Based Addressing</a>
-- <a href="notes/2026-09-16-PATTERNS-ONLINE-SCHEMA-CHANGES.md"> Patterns for Online Schema Changes</a>
-- <a href="notes/2026-08-27-SYNC-ASYNC-REPLICATION.md">Synchronous & Asynchronous Replication</a>
-- <a href="notes/2026-09-09-Multi‑Version-Concurrency-Control.md">Multi‑Version Concurrency Control</a>
-- <a href="notes/2026-08-21-WRITE-AHEAD-LOG.md">Write Ahead Log</a>
-- <a href="notes/2026-08-20-SQL-ISOLATION-LEVELS.md">SQL Isolation Levels</a>
-- <a href="notes/2026-07-01-Read-Repair-Hinted-Handoff-Anti‑entropy-Eventually-Consistent-Systems.md">Data Replication | Read Repair, Hinted Handoff & Anti‑entropy In Eventually Consistent Systems?</a>
-- <a href="notes/2026-01-06-paelc-cap-calm-theorems.md">Scalability | Data Replication | PACELC, CAP and CALM Theorems </a>
-- <a href="notes/2025-12-31-consensus.md">Scalability | Data Replication | Consensus</a>
-- <a href="notes/2025-04-22-data-replication.md">Scalability | Data Replication</a>
-- <a href="notes/2025-08-04-partitioning.md">Scalability | Partitioning</a>
+- [SQL Isolation Levels](notes/2026-08-20-SQL-ISOLATION-LEVELS.md)
+- [Multi-Version Concurrency Control](notes/2026-09-09-Multi-Version-Concurrency-Control.md)
+- [Write-Ahead Log](notes/2026-08-21-WRITE-AHEAD-LOG.md)
 
-### Security & Resiliency
+### Resiliency
 
-- <a href="notes/2026-07-30-Replay-Attack-Idempotency.md">Replay Attack vs Idempotency Issues</a>
-- <a href="notes/2026-07-25-TLS-mTLS.md">TLS vs mTLS </a>
-- <a href="notes/2026-07-16-Security-Server-Stored-Session-vs-JWT.md">Server‑stored Sessions vs JWTs for Authentication</a>
-- <a href="notes/2026-05-13-Liveness-Readiness-Checks.md">Liveness and Readiness Checks</a>
-- <a href="notes/2026-05-11-Sticky-Sessions.md">Sticky Sesssions</a>
-- <a href="notes/2026-05-14-Global-Server-Load-Balancing.md">Global Server Load Balancing</a>
-- <a href="notes/2025-04-21-load-balancing.md">Load Balancing</a>
-- <a href="notes/2026-02-09-Upstream-Resiliency.md">Upstream Resiliency</a>
-- <a href="notes/2026-02-04-Downstream-Resiliency.md">Downstream Resiliency</a>
-- <a href="notes/2026-01-28-Failure-Causes.md">Failure Causes</a>
+- [Resiliency Part 1 | Failure Causes](notes/2026-01-28-Failure-Causes.md)
+- [Resiliency Part 2 | Downstream Resiliency](notes/2026-02-04-Downstream-Resiliency.md)
+- [Resiliency Part 3 | Upstream Resiliency](notes/2026-02-09-Upstream-Resiliency.md)
+- [Load Balancing](notes/2025-04-21-load-balancing.md)
+- [Sticky Sessions](notes/2026-05-11-Sticky-Sessions.md)
+- [Liveness and Readiness Checks](notes/2026-05-13-Liveness-Readiness-Checks.md)
 
-### Time & IDs
+### Security
 
-- <a href="notes/2026-09-22-UUID-ULID-KSUID.md">UUID, ULID, KSUID & Snowflake IDs</a>
-- <a href="notes/2026-09-25-SNOWFLAKE-ID.md">Snowflnotes
+- [Authentication & Authorization for APIs](notes/2026-10-06-AUTHENTICATION-AUTHORIZATION.md)
+- [Server-Stored Sessions vs JWTs](notes/2026-07-16-Security-Server-Stored-Session-vs-JWT.md)
+- [Replay Attack vs Idempotency Issues](notes/2026-07-30-Replay-Attack-Idempotency.md)
+
 ### Designs
 
-- <a href="notes/2025-08-14-unique-id-generation.md">Design a Unique ID Generation System</a>
-- <a href="notes/2026-05-21-Resiliency-Hands-On-Design-Rate-Limiter.md">Design a Rate Limiter</a>
+- [Design a Unique ID Generation System](notes/2025-08-14-unique-id-generation.md)
+- [Design a Rate Limiter](notes/2026-05-21-Resiliency-Hands-On-Design-Rate-Limiter.md)
+
+### Appendix
+
+- [How Does gRPC Work?](notes/impl_details/how-does-grpc-work.md)
+- [Short Polling, Long Polling, SSE & WebSocket](notes/impl_details/Short-long-polling-SSE-WebSocket.md)
+- [Load Balancer Use Cases](notes/impl_details/Load-Balancer-Realistic-Use-Cases.md)
+
+### Work in progress
+
+- [Container Design Patterns for Distributed Systems](notes/2026-05-08-Container-Design-Patterns-Distributed-Systems.md)
+- [Global Server Load Balancing](notes/2026-05-14-Global-Server-Load-Balancing.md)
+- [Hashing Strategies](notes/2026-05-31-Scalability-Hashing-Strategies.md)
+- [Message Delivery Semantics](notes/2026-06-08-Scalability-Message-Delivery-Semantics.md)
+- [TLS vs mTLS](notes/2026-07-25-TLS-mTLS.md)
+- [Synchronous & Asynchronous Replication](notes/2026-08-27-SYNC-ASYNC-REPLICATION.md)
+- [Patterns for Online Schema Changes](notes/2026-09-16-PATTERNS-ONLINE-SCHEMA-CHANGES.md)
+- [Content-Addressable Storage & Location-Based Addressing](notes/2026-09-17-CONTENT-STORAGE-LOCATION-STORAGE.md)
+- [Checksums & ETags](notes/2026-09-18-CHECKSUMS-ETAGS.md)
+- [Hot, Warm, Cold, and Archive Storage Tiers](notes/2026-09-21-STORAGE-TIERS.md)
+- [UUID, ULID, KSUID & Snowflake IDs](notes/2026-09-22-UUID-ULID-KSUID.md)
+- [Snowflake IDs](notes/2026-09-25-SNOWFLAKE-ID.md)

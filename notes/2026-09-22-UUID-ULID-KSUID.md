@@ -1,1 +1,5 @@
-# qubit-note: Distributed Systems | Time & IDs | UUID, ULID, KSUID & Snowflake IDs
+# UUID, ULID, KSUID & Snowflake IDs
+
+::: {.callout-warning title="Work in progress"}
+This note has not been written yet.
+:::

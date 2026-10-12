@@ -1,49 +1,46 @@
-# qubit-note: Distributed Systems | Scalability | Cold & Warm Starts
-
+# Cold & Warm Starts
 
 ## Overview
 
-In this note we review to ideas associated with scalability and system behaviour. Namely,
-we will discuss cold and warms starts.
+In this note we review two ideas associated with scalability and system behaviour:
+cold starts and warm starts.
 
+## Cold and warm starts
 
-## Cold & Warm Starts
+Conceptually, cold and warm starts are easy to understand. A cold start refers to starting a system, application, or function from scratch, with no pre-existing state, whereas a warm start means reusing a system that is already initialized or cached, resulting in much faster startup and response times [1].
 
-Conceptually understanding cold and warm starts is very easy; cold start refers to starting up a system, application, or function from scratch with no pre-existing state whilst a warm start means restarting or reusing a system that’s already initialized or cached, resulting in much faster startup and response times [1].
+When it comes to performance, cold starts are best avoided, as they introduce extra latency.
+During a cold start, a system typically has to load code, establish database connections, read configuration files, and fill empty caches. Warm starts don't have this overhead, so the system can respond quickly.
+Cold starts typically exhibit the following characteristics [1]:
 
-Thus, when dealing with system performance cold starts better be avoided as they introduce extra latency and obviously slowdowns.
-This is because when in cold start a system will typically have to do things like  code loading, establishing database connections, read configuration files and fill empty caches. Warm starts on the other hand, don't have this overhead and therefore the system can respond quickly.
-Typically, cold starts exhibit the following characteristics [1]:
+- They require full initialization.
+- They have high latency on the first request.
 
-- Require full initialization
-- High latency on first contact
+::: {.callout-note title="Remark"}
+A cold start occurs when something runs for the first time, or when it hasn't been used for a while [1].
+An example of the latter is serverless platforms like AWS Lambda: Lambda performs a cold start for a function invoked after a period of inactivity, or when it scales up to handle more traffic. Similarly, a database cache goes cold after a restart or failover, meaning the cache has to fill up again from empty [1].
+:::
 
----
-**Remark**
+Warm starts are preferable for latency and throughput. However, keeping things warm consumes memory or compute resources continuously. For example, keeping a cache warm means using extra memory to store data, and keeping a server always on (to avoid a cold boot) incurs costs. If the performance gains outweigh the costs, keeping things warm is worth it.
 
- A cold start occurs when something is run for first time, or if it hasn’t been used in a while [1]. 
- An example of the latter are serverless platforms like AWS Lambda. An AWS Lambda will perform a cold start for a function if it’s invoked after a period of no activity or when scaling up to handle more traffic. Similarly, a database cache might go cold after a restart or failover, meaning the cache has to build up again from empty [1].
-
- ---
-
-Warm starts should be prefered in terms of improving latency and throughput. However, you should note that  keeping things running to stay warm can consume more memory or compute resources continuously. For example, keeping a cache warm might mean using extra memory to store data, and keeping a server always on (to avoid cold boot) might incur costs. If the performance gains outweight costs then warm starts should be used.
-
-There are several examples one can see the action of cold and warm starts some have already been mentioned.
+Some places where cold and warm starts show up, some of which we have already mentioned:
 
 - System boots
 - Launching an application
-- Web caching
+- Serverless functions
+- Web and database caches
 
 ## Summary
 
-All in all, cold starts and warm starts are all about initialization state and performance.
-Understanding cold versus warm starts is important in terms of system scalability as it affects how your architecture handles growth and load.
-In general, a scalable system should try to minimize cold start impacts so that adding more capacity or handling sporadic traffic doesn’t degrade the user experience.
-For example, load balancers might route traffic in a way to keep some servers warm, or cloud services may offer auto-scaling with warm pools (pre-initialized instances ready to take traffic).
-In addition, <a href="https://www.geeksforgeeks.org/system-design/what-is-cache-warming/">cache warming</a> techniques can be used after deployment so that users don’t hit entirely empty caches.
-By anticipating cold start costs, architects can improve performance during scale-ups or deployments and ensure the system remains responsive.
- 
+::: {.callout-note title="Summary"}
+Cold and warm starts are about initialization state and performance. A cold start initializes everything from scratch and pays a latency penalty on the first requests, while a warm start reuses already-initialized state and responds quickly, at the cost of keeping resources allocated.
+Understanding cold versus warm starts matters for scalability, because it affects how an architecture handles growth and load.
+A scalable system should minimize the impact of cold starts, so that adding capacity or handling sporadic traffic doesn't degrade the user experience.
+For example, load balancers can route traffic so that some servers stay warm, and cloud services offer auto-scaling with warm pools (pre-initialized instances ready to take traffic).
+In addition, [cache warming](https://www.geeksforgeeks.org/system-design/what-is-cache-warming/) can be used after a deployment so that users don't hit empty caches.
+By anticipating cold start costs, architects can keep the system responsive during scale-ups and deployments.
+:::
 
 ## References
 
-1. <a href="https://www.designgurus.io/course-play/grokking-scalable-systems-for-interviews/doc/what-are-cold-starts-and-warm-starts-and-why-do-they-matter-for-performance">What are Cold Starts and Warm Starts, and Why Do They Matter for Performance?</a>
+1. [What are Cold Starts and Warm Starts, and Why Do They Matter for Performance?](https://www.designgurus.io/course-play/grokking-scalable-systems-for-interviews/doc/what-are-cold-starts-and-warm-starts-and-why-do-they-matter-for-performance)

@@ -1,53 +1,44 @@
-# qubit-note: Distributed Systems Series | Data Replication Part 4 | Consensus
+# Data Replication Part 4 | Consensus
 
 ## Overview
 
-In this qubit-note we will discuss <a href="https://en.wikipedia.org/wiki/Consensus_(computer_science)">consensus</a> in a distributed system. Consensus has many applications e.g.
-a set of processes deciding on which one should hold a lock or commit a transaction [2]. State machine replication
-we discussed in <a href="2025-12-30-state-machine-replication.md">State machine replication</a> poses a solution
-to the consensus problem.
-
-**keywords** System-design, Software-architecture, Data-replication, Distributed-system, Consensus
-
+In this note we discuss [consensus](https://en.wikipedia.org/wiki/Consensus_(computer_science)) in distributed systems. Consensus has many applications, e.g.
+a set of processes deciding which one should hold a lock or whether to commit a transaction [2]. The [state machine replication](2025-12-30-state-machine-replication.md)
+approach we discussed previously is closely tied to the consensus problem.
 
 ## Consensus
 
-Let's start by first understanding what the consensus problem is all about. The consensus problem in distributed systems is the challenge of getting a group of independent computers (nodes) to agree on a single value or decision, even when some of them may fail or messages may be delayed or lost. In other words we require a set of processes to agree on a value so that [2]:
+The consensus problem is the challenge of getting a group of independent processes (nodes) to agree on a single value or decision, even when some of them may fail or messages may be delayed or lost. More precisely, we require a set of processes to agree on a value such that [2]:
 
-- fault-tolerance is maintained
-- every non-faulty process eventually agrees on a value
-- the final decision of every non-faulty process is the same everywhere
-- the value that is agreed has been proposed by a process
+- the algorithm tolerates the failure of some of the processes
+- every non-faulty process eventually decides on a value (termination)
+- the final decision of every non-faulty process is the same (agreement)
+- the value decided has been proposed by one of the processes (validity)
 
-State machine replication can used to solve the consensus problem; propose values to the leader node and chose the first one
-to be durably replicated to the followers [2]. There are many open-source projects that implement state machine replication and expose APIs on top of it; <a href="https://etcd.io/">etcd</a> and <a href="https://zookeeper.apache.org/">Apache Zookeper</a>
+State machine replication can be used to solve consensus: propose values to the leader node and choose the first one
+to be durably replicated to the followers [2]. Several open-source projects implement this and expose APIs on top of it, for example [etcd](https://etcd.io/) and [Apache ZooKeeper](https://zookeeper.apache.org/).
 
+When components never fail, achieving consensus is trivial. In practice, however, components
+do fail, and the network may reorder, delay, lose, or duplicate messages. Under these conditions consensus
+is hard [3]. In fact, the FLP impossibility result shows that no deterministic algorithm can guarantee consensus in a fully asynchronous system if even one process may crash; practical algorithms work around this with timeouts and leader election.
+Consensus is nevertheless essential in distributed systems, as it lets processes advance in lockstep and makes the
+group fault tolerant by allowing it to compensate for failed members [3].
 
-When components are not not subject to failure, achieving consensus is trivial. However, in practice components
-do fail and the network may reorder, delay, lose, or duplicate messages. Solving the consensus problem under these conditions
-is not easy anymore [3]. Consensus however is very signficiant in the context of distributed systems as it enables processes to advance in lockstep, ensuring fault tolerance by allowing the
-group to compensate for any failed member [3].
-
-So how do we implement consensus? One approach is to use leader-based consensus. This is what  algorithms, such as Multi-Paxos, Raft, or Viewstamped Replication do [3].
-Another approach is to use quorum-based consensus. We can also combine leader-based and quorum based approaches [3].
-
-
+So how do we implement consensus? One approach is leader-based consensus, used by algorithms such as Multi-Paxos, Raft, and Viewstamped Replication [3].
+Another approach is quorum-based consensus. The two can also be combined [3].
 
 ## Summary
 
-This qubit-note introduces the consensus problem in distributed systems, which is the challenge of ensuring that multiple independent nodes agree on a single decision despite failures, message delays, or losses. Consensus is essential for tasks such as lock acquisition, transaction commits, and data replication.
+::: {.callout-note title="Summary"}
+The consensus problem is the challenge of getting multiple independent nodes to agree on a single decision despite failures, message delays, or losses. Consensus underpins tasks such as lock acquisition, transaction commits, and data replication.
 
-The post outlines the core properties of consensus: fault tolerance, eventual agreement among all non-faulty processes, a single consistent decision across the system, and the guarantee that the agreed value was proposed by a participating process. It highlights state machine replication as a practical way to solve consensus, where proposed values are ordered and durably replicated—an approach used by systems like etcd and Apache ZooKeeper.
+A consensus algorithm must tolerate failures and guarantee termination (every non-faulty process eventually decides), agreement (all non-faulty processes decide the same value), and validity (the decided value was proposed by some process). State machine replication is a practical way to solve consensus: proposed values are ordered and durably replicated, an approach used by systems like etcd and Apache ZooKeeper.
 
-While consensus is trivial in failure-free environments, real-world distributed systems must handle crashes and unreliable networks, making the problem significantly harder. The note emphasizes the importance of consensus in enabling coordinated progress and fault tolerance. Finally, it briefly introduces common implementation strategies, including leader-based algorithms (such as Paxos, Raft, and Viewstamped Replication), quorum-based approaches, and hybrids that combine both techniques.
+While consensus is trivial when nothing fails, real systems must handle crashes and unreliable networks, which makes the problem hard. Common implementation strategies are leader-based algorithms (Multi-Paxos, Raft, Viewstamped Replication), quorum-based approaches, and hybrids of the two.
+:::
 
 ## References
 
-1. <a href="https://en.wikipedia.org/wiki/Consensus_(computer_science)">Consensus</a>
-2. Robert Vitillo, _Understanding Distributed Systems What every developer should know about large distributed applications_
+1. [Consensus](https://en.wikipedia.org/wiki/Consensus_(computer_science))
+2. Roberto Vitillo, _Understanding Distributed Systems: What every developer should know about large distributed applications_
 3. Dominik Tornow, _Think Distributed Systems_, Manning Publications
-
-
-
-
-

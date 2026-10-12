@@ -1,1 +1,5 @@
-# qubit-note: Distributed Systems | Databases & Storage | Synchronous and Asynchronous Replication
+# Synchronous & Asynchronous Replication
+
+::: {.callout-warning title="Work in progress"}
+This note has not been written yet.
+:::
