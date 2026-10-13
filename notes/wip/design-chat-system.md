@@ -19,7 +19,7 @@ Deliver messages between users in real time, keep history, and show who is onlin
 
 ## Related lessons
 
-- [Short Polling, Long Polling, SSE & WebSocket](../impl_details/Short-long-polling-SSE-WebSocket.md)
+- [Lesson 11: HTTP](../2026-04-09-Part-8-HTTP.md)
 - [Lesson 55: Logical Clocks](logical-clocks.md)
 - [Lesson 56: Failure Detection and Group Membership](failure-detection-and-membership.md)
 

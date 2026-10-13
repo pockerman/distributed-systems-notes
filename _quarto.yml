@@ -4,7 +4,6 @@ project:
   render:
     - index.md
     - notes/*.md
-    - notes/impl_details/*.md
     # Unfinished lessons live in notes/wip/ and are not rendered; move a lesson
     # into notes/ and add it to the chapters below once it is written.
   preview:
@@ -76,10 +75,6 @@ book:
       chapters:
         - notes/2025-08-14-unique-id-generation.md
         - notes/2026-05-21-Resiliency-Hands-On-Design-Rate-Limiter.md
-  appendices:
-    - notes/impl_details/how-does-grpc-work.md
-    - notes/impl_details/Short-long-polling-SSE-WebSocket.md
-    - notes/impl_details/Load-Balancer-Realistic-Use-Cases.md
 
 format:
   html:

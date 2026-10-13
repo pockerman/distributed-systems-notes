@@ -15,15 +15,10 @@ The chapters and their order are defined in [`_quarto.yml`](_quarto.yml). Unfini
 
 ## Contents
 
-### Introduction
-
 - [Lesson 1: Introduction to Distributed Systems](notes/2026-02-24-part-1-Intro.md)
 - [Lesson 2: Challenges in Distributed Systems](notes/2026-03-09-part-2-Challenges.md)
 - [Lesson 3: Design Concepts: Request Routing](notes/2026-05-09-Distributed-Systems-Design-Concepts-Part-1.md)
 - [Lesson 4: Design Concepts: Data and Services](notes/2026-05-10-Distributed-Systems-Design-Concepts-Part-2.md)
-
-### Networking & Communication
-
 - [Lesson 5: Inter-Process Communication](notes/2026-03-16-part-3-OSI_MODEL.md)
 - [Lesson 6: TCP](notes/2026-03-17-part-4-TCP_101.md)
 - [Lesson 7: TLS 101](notes/2026-04-06-Part-5-TLS-101.md)
@@ -32,9 +27,6 @@ The chapters and their order are defined in [`_quarto.yml`](_quarto.yml). Unfini
 - [Lesson 10: APIs](notes/2026-04-09-Part-7-API.md)
 - [Lesson 11: HTTP](notes/2026-04-09-Part-8-HTTP.md)
 - [Lesson 12: Forward Proxy, Reverse Proxy & NAT](notes/2026-08-04-FWD-PROXY-REVERSE-PROXY-NAT.md)
-
-### Scalability & Caching
-
 - [Lesson 13: Little's Law](notes/2026-05-18-Scalability-Little-Law.md)
 - [Lesson 14: Cold & Warm Starts](notes/2026-05-20-Scalability-Cold-Warm-Starts.md)
 - [Lesson 15: Sharded Counters](notes/2025-08-11-sharded-counters.md)
@@ -42,9 +34,6 @@ The chapters and their order are defined in [`_quarto.yml`](_quarto.yml). Unfini
 - [Lesson 17: Cache Coherence](notes/2026-01-21-cache-coherency.md)
 - [Lesson 18: Cache Replacement](notes/2026-01-26-Cache-Replacement.md)
 - [Lesson 19: Negative Caching](notes/2026-04-28-Negative-Caching.md)
-
-### Replication & Partitioning
-
 - [Lesson 20: Replication Strategies](notes/2025-04-22-data-replication.md)
 - [Lesson 21: Consistency Models](notes/2025-04-28-consistency-models.md)
 - [Lesson 22: State Machine Replication](notes/2025-12-30-state-machine-replication.md)
@@ -53,38 +42,20 @@ The chapters and their order are defined in [`_quarto.yml`](_quarto.yml). Unfini
 - [Lesson 25: Common Conflict Resolution Strategies](notes/2026-06-29-Common-Conflict-Resolution-Strategies.md)
 - [Lesson 26: Read Repair, Hinted Handoff & Anti-entropy in Eventually Consistent Systems](notes/2026-07-01-Read-Repair-Hinted-Handoff-Anti-entropy-Eventually-Consistent-Systems.md)
 - [Lesson 27: Partitioning](notes/2025-08-04-partitioning.md)
-
-### Databases & Storage
-
 - [Lesson 28: SQL Isolation Levels](notes/2026-08-20-SQL-ISOLATION-LEVELS.md)
 - [Lesson 29: Multi-Version Concurrency Control](notes/2026-09-09-Multi-Version-Concurrency-Control.md)
 - [Lesson 30: Write-Ahead Log](notes/2026-08-21-WRITE-AHEAD-LOG.md)
-
-### Resiliency
-
 - [Lesson 31: Failure Causes](notes/2026-01-28-Failure-Causes.md)
 - [Lesson 32: Downstream Resiliency](notes/2026-02-04-Downstream-Resiliency.md)
 - [Lesson 33: Upstream Resiliency](notes/2026-02-09-Upstream-Resiliency.md)
 - [Lesson 34: Load Balancing](notes/2025-04-21-load-balancing.md)
 - [Lesson 35: Sticky Sessions](notes/2026-05-11-Sticky-Sessions.md)
 - [Lesson 36: Liveness and Readiness Checks](notes/2026-05-13-Liveness-Readiness-Checks.md)
-
-### Security
-
 - [Lesson 37: Authentication & Authorization for APIs](notes/2026-10-06-AUTHENTICATION-AUTHORIZATION.md)
 - [Lesson 38: Server-Stored Sessions vs JWTs for Authentication](notes/2026-07-16-Security-Server-Stored-Session-vs-JWT.md)
 - [Lesson 39: Replay Attack vs Idempotency Issues](notes/2026-07-30-Replay-Attack-Idempotency.md)
-
-### Designs
-
 - [Lesson 40: Design a Unique ID Generation System](notes/2025-08-14-unique-id-generation.md)
 - [Lesson 41: Design a Rate Limiter](notes/2026-05-21-Resiliency-Hands-On-Design-Rate-Limiter.md)
-
-### Appendix
-
-- [How Does gRPC Work?](notes/impl_details/how-does-grpc-work.md)
-- [Short Polling, Long Polling, SSE & WebSocket](notes/impl_details/Short-long-polling-SSE-WebSocket.md)
-- [Load Balancer Use Cases](notes/impl_details/Load-Balancer-Realistic-Use-Cases.md)
 
 ### Work in progress
 
