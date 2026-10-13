@@ -57,6 +57,10 @@ The chapters and their order are defined in [`_quarto.yml`](_quarto.yml). Unfini
 - [Lesson 40: Design a Unique ID Generation System](notes/2025-08-14-unique-id-generation.md)
 - [Lesson 41: Design a Rate Limiter](notes/2026-05-21-Resiliency-Hands-On-Design-Rate-Limiter.md)
 
+### Appendix
+
+- [gRPC Hands On](notes/appendix/2026-05-05-API-Basics-gRPC-101.md)
+
 ### Work in progress
 
 - [Lesson 42: Container Design Patterns for Distributed Systems](notes/wip/2026-05-08-Container-Design-Patterns-Distributed-Systems.md)

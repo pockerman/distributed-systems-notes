@@ -4,6 +4,7 @@ project:
   render:
     - index.md
     - notes/*.md
+    - notes/appendix/*.md
     # Unfinished lessons live in notes/wip/ and are not rendered; move a lesson
     # into notes/ and add it to the chapters below once it is written.
   preview:
@@ -75,6 +76,8 @@ book:
       chapters:
         - notes/2025-08-14-unique-id-generation.md
         - notes/2026-05-21-Resiliency-Hands-On-Design-Rate-Limiter.md
+  appendices:
+    - notes/appendix/2026-05-05-API-Basics-gRPC-101.md
 
 format:
   html:

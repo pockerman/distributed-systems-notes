@@ -1,0 +1,4 @@
+grpcio>=1.80.0
+grpcio-tools>=1.80.0
+# The code in grpc101/python was generated with protobuf 6.31.1, so the runtime must be at least that version.
+protobuf>=6.31.1,<8
