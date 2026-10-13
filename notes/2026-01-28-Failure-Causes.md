@@ -1,75 +1,72 @@
-# qubit-note: Distributed Systems Series | Resiliency Part 1 | Failure Causes
+# Resiliency Part 1 | Failure Causes
 
 ## Overview
 
-In this part of the series we want to discuss how to make a distributed system more resilient to failure. 
-To this end we need to know the most common causes of failure we can encounter in a distributed system. In this qubit-note, we will discuss the following
+In this part of the series we discuss how to make a distributed system more resilient to failure.
+To do so we first need to know the most common causes of failure in a distributed system. In this note we discuss:
 
-- Single point of failure
-- Network paritioning
+- Single points of failure
+- Unreliable networks
 - Slow processes
 - Load spikes
-
-**keywords** software-architecture, system-design, distributed-systems, failure-causes, system-resilience
 
 ## Failure causes
 
-Systems can fail so informally, we can say that a failure is a potential state that that the systen can transition to albeit unwanted.
-Typicallly, on a failure the system will transition from a good state to a bad state
-Failure tolerance is the ability of a system to behave in a well-defined manner when the system is in a bad state [2].
+Informally, a failure is an unwanted state that the system can transition to.
+On a failure, the system transitions from a good state to a bad state.
+Fault tolerance is the ability of a system to behave in a well-defined manner even when it is in a bad state [2].
 
-#### Single point of failure
+### Single point of failure
 
-A distributed system consists of a number of nodes that many things can go wrong within each node that can cause it to malfunction e.g. software bugs, disk crashes.
-A single point of failure (SPF) is a node of the system that when it crashes, or performs suboptimally, the whole system crashes with it [1].
-The most glaring example is perhaps an application that cannot connect to its backend because the backend service is down.
+A distributed system consists of many nodes, and many things can go wrong within each node, e.g. software bugs or disk crashes.
+A single point of failure (SPF) is a component whose failure, or degraded performance, brings the whole system down with it [1].
+The most glaring example is perhaps an application that cannot do anything useful because the single backend service it depends on is down.
 
-Obviously, SPFs should be detected when architecturing the system. Sometimes identifying SPFs is easy. However, the best way to identify a node
-whether is an SPF or not is to what would happen to the system if the node were to fail [1].
+SPFs should be identified when designing the system. Sometimes this is easy. In general, the best way to find out
+whether a component is an SPF is to ask what would happen to the system if that component failed [1].
 
-#### Network paritioning
+### Unreliable networks
 
-The network that a distributed system operates on can be unreliable in many aspects. For example packets may be dropped or the network may simply be slow.
-When a client sends a request to a server it expects that a response will be returned. This however need not be the case. The client though has no way of
-knowing whether the response is on its way or not. At this point a client has two options either wait or fail the request [1].
+The network that a distributed system runs on is unreliable in many ways. For example, packets may be dropped, or the network may simply be slow.
+When a client sends a request to a server, it expects a response. However, the client has no way of
+knowing whether a response is on its way or not, so it has two options: wait, or fail the request [1].
 There are several reasons why the client hasn't received a response [1]:
 
-- The request has been dropped by a proxy or router or network switch
-- The server is slow or crashed
-- The server's response has been dropped by a proxy or router or network switch
+- The request has been dropped by a proxy, router, or network switch
+- The server is slow or has crashed
+- The server's response has been dropped by a proxy, router, or network switch
 
-#### Slow processes
+When a network partition splits the nodes into groups that cannot talk to each other, every node in one group sees the nodes in the other as failed.
 
-A process running on a server many times can slow down. From a client's perspective a slow process is the same as an one that isn't running at all.
-Typically, a process is slowing down because of resource leaks with memory leaks is probably the most well known. Other issues may be
-a thread that is making HTTP requests without setting  a timeout. If the call never returns then the thread will never be returend to the thread pool [1].
+### Slow processes
 
+A process running on a server can slow down. From a client's perspective, a slow process is often indistinguishable from one that isn't running at all.
+A common reason for a process slowing down is a resource leak, with memory leaks probably being the best known. Another example is
+a thread that makes HTTP requests without setting a timeout: if a call never returns, the thread is never returned to the thread pool, and the pool is eventually exhausted [1].
 
-#### Load spikes
+### Load spikes
 
-Typically a system is designed having a certain load pattern in mind. However often this assumption fails in practice for a variety of reasons [1]:
+A system is typically designed with a certain load in mind. In practice, the actual load often deviates from this assumption for a variety of reasons [1]:
 
-- The requests may exhibit some sort of seasonality
-- Some requests might be more expensive than others
-- Some requests are malicious intended to abuse the system e.g. DDoS attacks
-
+- The requests may exhibit seasonality
+- Some requests may be much more expensive than others
+- Some requests may be malicious and intended to abuse the system, e.g. DDoS attacks
 
 ## Summary
 
-This note introduces common causes of failure in distributed systems as a foundation for building resilient architectures. It focuses on four major failure categories.
+::: {.callout-note title="Summary"}
+Building resilient distributed systems starts with understanding how they fail. This note covered four major failure causes:
 
-- Single points of failure (SPFs)
-- Network partitioning
-- Slow processes
-- Load spikes
+- Single points of failure (SPFs): components whose failure brings down the whole system
+- Unreliable networks: requests and responses can be dropped or delayed, and a client can't tell why no response arrived
+- Slow processes: often caused by resource leaks or missing timeouts, and from the outside indistinguishable from crashed ones
+- Load spikes: caused by seasonality, expensive requests, or malicious traffic
+:::
 
-Overall, understanding these failure modes is a prerequisite to designing resilient distributed systems.
-In the next part we will look into specific mechanisms that help a system to have failure tolerance.
-We will follow [1] and split these mechanisms into downstream and upstream approaches.
-
+In the next parts we look into specific mechanisms that make a system fault tolerant.
+Following [1], we split these mechanisms into [downstream](2026-02-04-Downstream-Resiliency.md) and [upstream](2026-02-09-Upstream-Resiliency.md) resiliency.
 
 ## References
 
-1. Robert Vitillo, _Understanding Distributed Systems What every developer should know about large distributed applications_
+1. Roberto Vitillo, _Understanding Distributed Systems: What every developer should know about large distributed applications_
 2. Dominik Tornow, _Think Distributed Systems_, Manning Publications
-

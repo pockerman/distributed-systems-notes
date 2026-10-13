@@ -1,66 +1,63 @@
-# qubit-note: Part 6 | Domain Name System
+# Part 6 | Domain Name System
 
 ## Overview
 
-We now know how to reliably, see <a href="2026-03-17-part-4-TCP_101.md">qubit-note:  Part 4 | TCP 101</a>, and securely, see <a href="2026-04-06-Part-5-TLS-101.md">qubit-note:  Part 5 | TLS 101</a>, communicate between two processes located on different machines. Howver in order to do this we need to discover the IP address of the remote process we want to connect to.
-In order to do this we can use the <a href="https://en.wikipedia.org/wiki/Domain_Name_System">Domain name system</a> or DNS. This is distributed, hierarchical ane eventually consistent ke-value store [5].
-
+We now know how to communicate reliably (see [Part 4 | TCP 101](2026-03-17-part-4-TCP_101.md)) and securely (see [Part 5 | TLS 101](2026-04-06-Part-5-TLS-101.md)) between two processes located on different machines. However, in order to do this we first need to discover the IP address of the remote process we want to connect to.
+For this we use the [Domain Name System](https://en.wikipedia.org/wiki/Domain_Name_System), or DNS. DNS is a distributed, hierarchical and eventually consistent key-value store [5].
 
 ## Domain name system
 
-We know that computers are uniquely identified using <a href="https://en.wikipedia.org/wiki/IP_address">IP addresses</a>. 
-However, only rarely do we, as humans,  use these addresses to reach a website hosted on a given machine. We, most of the time, use the 
-domain name of the website in order to access it as this is definitely easier in terms of our memory capacity. 
-The translation of the domain name into a legitimate IP address is done by the <a href="https://en.wikipedia.org/wiki/Domain_Name_System">domain name system</a>.
+Computers are identified on a network using [IP addresses](https://en.wikipedia.org/wiki/IP_address).
+However, we humans rarely use these addresses to reach a website. Most of the time we use the
+domain name of the website, as it is much easier to remember.
+The translation of a domain name into an IP address is done by the [domain name system](https://en.wikipedia.org/wiki/Domain_Name_System).
 
+DNS is, in a sense, the naming service of the internet. Its job is to map user-friendly domain names, such as `google.com`,
+to machine-friendly IP addresses. The browser that we use to access the internet queries DNS for the IP address that corresponds to
+the domain name the user typed.
 
-So the DNS is somehow the naming service of today's internet. It's job is do map the user-friendly domain names such as ```google.com```
-to machine friendly IP addresses. the browser then that we use to access the internet queries the DNS for the IP address that corresponds to
-the user provided domain name. 
-
-Given the nature of the service that DNS provides it has been implemented as a distributed system consisting of a number
+Given the nature of the service that DNS provides, it is implemented as a distributed system consisting of a number
 of different types of servers:
 
-- DNS resolver
-- Root-level name servers
+- DNS resolvers
+- Root name servers
 - Top-level domain (TLD) name servers
 - Authoritative name servers
 
-I won't cover the details of these in this post, however I want to answer the following simple question.
+I won't cover the details of these in this note. However, I want to answer the following simple question:
 
-_How does the browser know the address of the DNS machine?_
+_How does the browser know the address of the DNS resolver?_
 
-The answer to this question is that typically, the OS that we happen to use has a list of the IP addresses of DNS resolvers e.g. under linux this
-will be in ```/etc/resolv.conf```.  The system then can query these resolvers for any DNS queries.
-These DNS resolvers can  resolve DNS related queries using special software e.g. the <a href="https://en.wikipedia.org/wiki/BIND">Berkeley Internet Name Domain</a>, or BIND.
-The address of these resolvers rarely changes.
+Typically, the operating system keeps a list of the IP addresses of DNS resolvers; e.g. on Linux these are listed
+in `/etc/resolv.conf`. The system can then send any DNS query to these resolvers.
+The resolvers answer queries using DNS server software such as [BIND](https://en.wikipedia.org/wiki/BIND) (Berkeley Internet Name Domain).
+The addresses of these resolvers rarely change.
 
-
-Given the role of the DNS it is natural that we prioritise availability and scalability versus consistency.
-Recall that strong consistency means that all users see the same data at the same time, no matter where they are in the world. 
-In the case of DNS this translates that once a  DNS record changes, everyone should immediately get the updated IP address.
-However, given the distributed nature of DNS satisfying such a requirement would cause a number of problems:
+Given the role of DNS, it is natural that it prioritises availability and scalability over consistency.
+Recall that strong consistency means that all users see the same data at the same time, no matter where they are in the world.
+For DNS this would mean that once a DNS record changes, everyone immediately gets the updated IP address.
+Given the scale and distributed nature of DNS, satisfying such a requirement would cause a number of problems:
 
 - Massive network traffic
 - Slower response times
 - Bottlenecks at the authoritative servers
 
-As a distributed system, DNS uses <a href="2026-01-20-Caching.md">caching</a> in order to enhance scalability.
-In other words, When a resolver queries a DNS record, it stores the result for a period defined by the <a href="https://en.wikipedia.org/wiki/Time_to_live">Time to Live (TTL) value</a>.
-This tactic is in general ok as most of the time, DNS records don’t change frequently. In additiion if we do need faster propagation,
-we can lower the TTL before making changes. The downside of course of such an approach is that if a domain’s IP address changes, 
-it might take minutes or hours for the change to propagate everywhere as some resolvers still use the cached version until the TTL expires.
+Instead, DNS relies heavily on [caching](2026-01-20-Caching.md) to scale.
+When a resolver looks up a DNS record, it stores the result for a period defined by the record's [Time to Live (TTL)](https://en.wikipedia.org/wiki/Time_to_live) value.
+This works well because most DNS records don't change frequently. If we do need a change to propagate faster,
+we can lower the TTL ahead of making the change. The downside is that when a domain's IP address changes,
+it can take minutes or hours for the change to propagate everywhere, because some resolvers keep using the cached record until its TTL expires.
 
 ## Summary
 
-The Domain Name System (DNS) is a distributed, hierarchical service that translates human-friendly domain names (like “google.com”) into machine-friendly IP addresses, enabling browsers to locate and connect to remote servers. While protocols like TCP and TLS handle reliable and secure communication, DNS is responsible for discovering the correct destination address. It works through a network of servers (resolvers, root, TLD, and authoritative servers), with the user’s operating system typically preconfigured with DNS resolver addresses. To ensure scalability and availability, DNS relies on caching: resolved addresses are stored temporarily based on a Time to Live (TTL) value, reducing load and speeding up responses, though this introduces eventual consistency—meaning updates to records may take time to propagate across the system.
-
-
+::: {.callout-note title="Summary"}
+The Domain Name System (DNS) is a distributed, hierarchical service that translates human-friendly domain names (like `google.com`) into machine-friendly IP addresses, enabling browsers to locate and connect to remote servers. While protocols like TCP and TLS handle reliable and secure communication, DNS is responsible for discovering the destination address. It is made up of resolvers, root, TLD and authoritative name servers, and the operating system is typically preconfigured with the addresses of DNS resolvers. To ensure scalability and availability, DNS relies on caching: resolved records are stored for a period given by their Time to Live (TTL), reducing load and speeding up responses. The price is eventual consistency: updates to records may take time to propagate across the system.
+:::
 
 ## References
 
-1. <a href="https://en.wikipedia.org/wiki/IP_address">IP addresses</a>
-2. <a href="https://en.wikipedia.org/wiki/Domain_Name_System">Domain name system</a>
-3. <a href="https://en.wikipedia.org/wiki/BIND">Berkeley Internet Name Domain</a>
-4. <a href="https://en.wikipedia.org/wiki/Time_to_live">Time to Live (TTL) value</a>
-5. Robert Vitillo, _Understanding Distributed Systems What every developer should know about large distributed applications_
+1. [IP addresses](https://en.wikipedia.org/wiki/IP_address)
+2. [Domain name system](https://en.wikipedia.org/wiki/Domain_Name_System)
+3. [Berkeley Internet Name Domain](https://en.wikipedia.org/wiki/BIND)
+4. [Time to Live (TTL)](https://en.wikipedia.org/wiki/Time_to_live)
+5. Roberto Vitillo, _Understanding Distributed Systems: What every developer should know about large distributed applications_

@@ -1,0 +1,105 @@
+project:
+  type: book
+  output-dir: _book
+  render:
+    - index.md
+    - notes/*.md
+    - notes/impl_details/*.md
+    # Work-in-progress stubs; add them back to `render` and to the chapters below once written.
+    - "!notes/2026-05-08-Container-Design-Patterns-Distributed-Systems.md"
+    - "!notes/2026-05-14-Global-Server-Load-Balancing.md"
+    - "!notes/2026-05-31-Scalability-Hashing-Strategies.md"
+    - "!notes/2026-06-08-Scalability-Message-Delivery-Semantics.md"
+    - "!notes/2026-07-25-TLS-mTLS.md"
+    - "!notes/2026-08-27-SYNC-ASYNC-REPLICATION.md"
+    - "!notes/2026-09-16-PATTERNS-ONLINE-SCHEMA-CHANGES.md"
+    - "!notes/2026-09-17-CONTENT-STORAGE-LOCATION-STORAGE.md"
+    - "!notes/2026-09-18-CHECKSUMS-ETAGS.md"
+    - "!notes/2026-09-21-STORAGE-TIERS.md"
+    - "!notes/2026-09-22-UUID-ULID-KSUID.md"
+    - "!notes/2026-09-25-SNOWFLAKE-ID.md"
+  preview:
+    port: 4322
+    browser: false
+
+book:
+  title: "Distributed Systems Notes"
+  author: "pockerman"
+  repo-url: https://github.com/pockerman/distributed-systems-notes
+  repo-actions: [edit, issue]
+  search: true
+  chapters:
+    - index.md
+    - part: "Introduction"
+      chapters:
+        - notes/2026-02-24-part-1-Intro.md
+        - notes/2026-03-09-part-2-Challenges.md
+        - notes/2026-05-09-Distributed-Systems-Design-Concepts-Part-1.md
+        - notes/2026-05-10-Distributed-Systems-Design-Concepts-Part-2.md
+    - part: "Networking & Communication"
+      chapters:
+        - notes/2026-03-16-part-3-OSI_MODEL.md
+        - notes/2026-03-17-part-4-TCP_101.md
+        - notes/2026-04-06-Part-5-TLS-101.md
+        - notes/2025-04-18-part-6-domain-name-system.md
+        - notes/2026-04-09-Part-7-API.md
+        - notes/2026-04-09-Part-8-HTTP.md
+        - notes/2026-08-05-HTTP-1-2-3.md
+        - notes/2026-07-31-TCP-UDP-QUIC.md
+        - notes/2026-08-04-FWD-PROXY-REVERSE-PROXY-NAT.md
+    - part: "Scalability & Caching"
+      chapters:
+        - notes/2026-05-18-Scalability-Little-Law.md
+        - notes/2026-05-20-Scalability-Cold-Warm-Starts.md
+        - notes/2025-08-11-sharded-counters.md
+        - notes/2026-01-20-Caching.md
+        - notes/2026-01-21-cache-coherency.md
+        - notes/2026-01-26-Cache-Replacement.md
+        - notes/2026-04-28-Negative-Caching.md
+    - part: "Replication & Partitioning"
+      chapters:
+        - notes/2025-04-22-data-replication.md
+        - notes/2025-04-28-consistency-models.md
+        - notes/2025-12-30-state-machine-replication.md
+        - notes/2025-12-31-consensus.md
+        - notes/2026-01-06-pacelc-cap-calm-theorems.md
+        - notes/2026-06-29-Common-Conflict-Resolution-Strategies.md
+        - notes/2026-07-01-Read-Repair-Hinted-Handoff-Anti-entropy-Eventually-Consistent-Systems.md
+        - notes/2025-08-04-partitioning.md
+    - part: "Databases & Storage"
+      chapters:
+        - notes/2026-08-20-SQL-ISOLATION-LEVELS.md
+        - notes/2026-09-09-Multi-Version-Concurrency-Control.md
+        - notes/2026-08-21-WRITE-AHEAD-LOG.md
+    - part: "Resiliency"
+      chapters:
+        - notes/2026-01-28-Failure-Causes.md
+        - notes/2026-02-04-Downstream-Resiliency.md
+        - notes/2026-02-09-Upstream-Resiliency.md
+        - notes/2025-04-21-load-balancing.md
+        - notes/2026-05-11-Sticky-Sessions.md
+        - notes/2026-05-13-Liveness-Readiness-Checks.md
+    - part: "Security"
+      chapters:
+        - notes/2026-10-06-AUTHENTICATION-AUTHORIZATION.md
+        - notes/2026-07-16-Security-Server-Stored-Session-vs-JWT.md
+        - notes/2026-07-30-Replay-Attack-Idempotency.md
+    - part: "Designs"
+      chapters:
+        - notes/2025-08-14-unique-id-generation.md
+        - notes/2026-05-21-Resiliency-Hands-On-Design-Rate-Limiter.md
+  appendices:
+    - notes/impl_details/how-does-grpc-work.md
+    - notes/impl_details/Short-long-polling-SSE-WebSocket.md
+    - notes/impl_details/Load-Balancer-Realistic-Use-Cases.md
+
+format:
+  html:
+    theme:
+      light: cosmo
+      dark: darkly
+    toc: true
+    number-sections: false
+    html-math-method: mathjax
+    comments:
+      hypothesis: true

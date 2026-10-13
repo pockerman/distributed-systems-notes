@@ -1,82 +1,75 @@
-# qubit-note: Distributed Systems | System Security | Replay Attack vs Idempotency Issues
+# Replay Attack vs Idempotency Issues
 
 ## Overview
 
-A replay attack is a type of cyberattack where an attacker intercepts a valid data transmission and maliciously reuses (repeats or delays) it to fraudulently repeat an action or gain unauthorized access.
+A replay attack is a type of attack in which an attacker intercepts a valid data transmission and maliciously reuses it, by repeating or delaying it, to fraudulently repeat an action or gain unauthorized access.
+In other words, the attacker "plays back" a previously sent message (such as a login token or a payment request) to trick a system into treating it as a new, legitimate request.
 
-In other words, the attacker “plays back” a previously sent message (such as a login token or a payment request) to trick a system into thinking it’s a new, legitimate request.
+This is distinct from idempotency issues, which are problems that occur when a system processes the same request multiple times because of a design flaw, not necessarily maliciously, leading to unintended duplicate effects.
 
-This concept is distinct from idempotency issues, which refer to problems that occur when a system processes the same request or action multiple times due to design flaws (not necessarily maliciously), leading to unintended duplicate effects.
+## Replay attacks
 
-A replay attack (also known as a playback attack) is a security breach where a hacker intercepts a legitimate message or transaction and then resends it unaltered to replicate its effect.
+A replay attack, also known as a playback attack, is a security breach in which an attacker captures a legitimate message or transaction and resends it unaltered to reproduce its effect.
+Because the message is a valid transmission, often already authenticated or encrypted, the system can be fooled into accepting it again.
+It is often described as a simple form of man-in-the-middle attack, and it exploits the fact that the system cannot distinguish the replayed message from the original.
 
-Because the data is a valid transmission (often already authenticated or encrypted), the system can be fooled into accepting it again.
+**How it works.** An attacker eavesdrops on the communication between a client and a server, captures a message (for example, a login request or a bank transfer request), and later sends exactly the same data to the server. The server, believing it is a new request, performs the action again. The attacker doesn't need to decrypt or understand the message; resending the captured bytes can be enough.
 
-This kind of attack is a subset of man-in-the-middle techniques and exploits the fact that the system cannot distinguish the replayed message from an original request.
+**Why it matters.** Replay attacks can have serious consequences. An attacker could replay a payment or money transfer request, causing duplicate charges or unauthorized withdrawals. In an authentication scenario, an attacker might capture a password hash or an authentication token and resend it to impersonate a user. In the classic example, Alice sends her hashed password to Bob (the server) to log in, and Eve, an eavesdropper, captures the hash. Later, Eve replays the same hash to Bob, who accepts it and grants access, thinking Eve is Alice.
 
-How it works: An attacker eavesdrops on communication between a client and server, captures a message (for example, a login credential or a bank transfer request), and later sends the exact same data to the server. The server, thinking it’s a normal second request, performs the action again. The attacker doesn’t need to decrypt or understand the message; simply resending the captured packet can be enough to cause the action to repeat.
+**Common targets.** Replay attacks target protocols whose messages lack freshness indicators, like timestamps or one-time values. Naive authentication schemes that don't use nonces (one-time random numbers) or timestamped tokens are vulnerable: an attacker can replay a login request or a transaction because the system doesn't realize it is a duplicate. TLS protects against replay of captured records within a connection, but application-level messages (e.g. a signed webhook, or TLS 1.3 0-RTT early data) can still be replayable.
 
-Importance in security: Replay attacks can lead to serious consequences. For instance, an attacker could replay a payment transaction or money transfer request, causing duplicate charges or unauthorized withdrawals from an account. In an authentication scenario, an attacker might capture an encrypted password hash or authentication token and resend it to impersonate a user (as illustrated in the classic Alice, Bob, and Eve scenario). In that example, Alice sends her hashed password to Bob (the server) to log in, and Eve (an eavesdropper) captures the hash. Later, Eve replays the same hash to Bob, who accepts it and grants access, thinking Eve is Alice.
+**Prevention.** To defend against replay attacks, systems make sure each request is unique or valid only once. Techniques include nonces, timestamps, and short-lived tokens, rejecting any message that is outside an expected time window or has been seen before. For instance, a server can require a cryptographic nonce in each request and remember it; if it sees the same nonce again, it knows the request is a replay and rejects it. Another approach is to include a timestamp and accept requests only within a short time window, making old messages useless. Secure APIs and webhooks typically sign the message together with a timestamp, so that a replayed message, even with identical content, is recognized as stale or already processed.
 
-Common targets: Replay attacks are often discussed in the context of network security and cryptographic protocols. They target systems where messages lack freshness indicators (like timestamps or one-time tokens). For example, older or naive authentication schemes that don’t use nonces (one-time random numbers) or timestamped tokens are vulnerable. An attacker can replay a login request or transaction if the system doesn’t realize it’s a duplicate.
+## Idempotency
 
-Prevention: To defend against replay attacks, systems implement measures to ensure each request or transaction is unique or only valid once. Techniques include using session IDs, nonces, or timestamps in each request, and rejecting any message that’s outside an expected time window or has been seen before. For instance, a server might require a cryptographic nonce (a random one-time number) in the client’s request and remember it; if it sees the same nonce again, it knows it’s a replay and will ignore it. Another approach is to include a timestamp and only accept requests within a short timeframe, making old messages useless if replayed later. In secure APIs or webhooks, servers may also attach or require signatures and verify them along with a timestamp, so that any replayed message (even if the content is same) is identified as stale or already processed.
+In contrast to a replay attack, idempotency is not an attack but a property of an operation.
+An operation is idempotent if performing it multiple times has the same effect as performing it once.
+In practical terms, repeating the action doesn't change the result beyond the first execution.
 
-In contrast to replay attacks, idempotency is not an attack but a property or design principle of an operation.
+The classic examples come from HTTP API design (see [HTTP](2026-04-09-Part-8-HTTP.md)): a `GET` request is idempotent (no matter how many times you send it, you retrieve the data without side effects), and so is updating a record with `PUT` (sending the same update twice leaves the record in the same final state).
+On the other hand, creating a new entry with `POST` is typically not idempotent: calling it multiple times can create duplicate entries.
 
-An operation is said to be idempotent if performing it multiple times has the same effect as doing it once.
+### Idempotency issues
 
-In practical terms, this means repeating the action doesn’t change the result beyond the first execution.
-
-The classic examples come from HTTP API design: for instance, making a GET request to fetch data is idempotent (no matter how many times you do it, you just retrieve the same data without side effects), or updating a record with PUT is idempotent (sending the same update twice leaves the record in the same final state).
-
-On the other hand, operations like creating a new entry with POST are typically non-idempotent by default, calling them multiple times could create multiple entries (duplicates).
-
-Idempotency Issues
-When a system or API does not properly implement idempotency for operations that may be invoked multiple times, you can get unintended side effects such as duplicate actions, charges, or records. These are what we refer to as idempotency issues.
-
-They often manifest when network glitches or user behavior cause the same request to be sent more than once.
-
-For example, imagine a user clicking a “Submit Payment” button twice because the page was slow.
-
-Without idempotency safeguards, the server might process two payment orders, charging the user twice.
-
-In a distributed system, if a client times out and retries a request, a non-idempotent endpoint could perform the action again (e.g. place a duplicate order) since it doesn’t realize the first attempt already succeeded.
-
+When a system does not handle repeated invocations of a non-idempotent operation, we get unintended side effects such as duplicate actions, charges, or records. These are idempotency issues.
+They often appear when network glitches or user behaviour cause the same request to be sent more than once.
+For example, imagine a user clicking a "Submit payment" button twice because the page was slow.
+Without idempotency safeguards, the server might process two payments and charge the user twice.
+In a distributed system, if a client times out and [retries](2026-02-04-Downstream-Resiliency.md) a request, a non-idempotent endpoint may perform the action again (e.g. place a duplicate order), since it doesn't know the first attempt succeeded.
 Idempotency issues are essentially bugs or design flaws where the system fails to handle repeated messages safely.
 
-Why Idempotency Matters
-Idempotency is crucial for building reliable and user-friendly systems, especially for financial transactions and external API calls.
+### Why idempotency matters
 
-If not addressed, duplicate processing can harm user trust (nobody wants to be double-charged) and lead to data inconsistencies or extra work (like issuing refunds, cleaning up duplicate database entries, etc.).
+Idempotency is crucial for building reliable and user-friendly systems, especially for financial transactions and calls to external APIs.
+Duplicate processing harms user trust (nobody wants to be charged twice) and leads to data inconsistencies or extra work (issuing refunds, cleaning up duplicate records, etc.).
+In distributed systems, failures and retries are common, and idempotency ensures that reprocessing a request doesn't cause unintended side effects.
+In short, designing idempotent operations, or handling duplicates explicitly, e.g. with idempotency keys, makes systems robust against both user error and network issues.
 
-In distributed systems and APIs, failures and retries are common, and idempotency ensures that reprocessing a request (say, due to a timeout or retry) doesn’t cause unintended side effects like duplicate charges or records.
+## Replay attacks vs idempotency issues: key differences
 
-In short, designing idempotent operations (or handling duplicates explicitly) is a best practice to make systems robust against both user error and network issues.
+Both involve repeated requests, so the two concepts are easy to confuse, but they are different:
 
-Replay Attack vs Idempotency Issues: Key Differences
-It’s easy to see overlap between replay attacks and idempotent operations since both involve repeated requests, but they refer to different concepts.
+- **Nature of the problem.** A replay attack is a security attack: a malicious actor deliberately reuses data to deceive a system. An idempotency issue is a design flaw: the system doesn't safely handle identical requests that arrive more than once, usually accidentally (e.g., because of retries or user actions). There is no malice in an idempotency issue, although an attacker could exploit a non-idempotent endpoint to amplify the effect of a replay.
+- **Context.** Replay attacks are discussed in security and cryptography, in relation to authentication tokens, network protocols, or transactions whose messages can be intercepted. Idempotency is discussed in software and API design, in relation to the reliability of operations in REST APIs, webhooks, and distributed systems. For example, webhook receivers are made idempotent because the sender re-sends an event when it doesn't receive an acknowledgment; this is about normal retries, not attackers.
+- **Goal and consequence.** The attacker's goal in a replay attack is to gain an unauthorized benefit, e.g. get a service twice for the price of one, duplicate a payment to themselves, or log in as someone else. The consequence of an idempotency issue is an accidental duplication, which causes errors (duplicate data, extra charges) through oversight rather than intent. The outcome may look the same (two payments instead of one), but the cause is different.
+- **Prevention.** Replay attacks are prevented with security measures, such as nonces, one-time tokens, timestamps, and signatures, which ensure each request is unique and can't be replayed out of context. Idempotency issues are prevented by designing operations to be idempotent or by handling duplicates explicitly, e.g. with idempotency keys, by checking whether an action has already been performed, or by using naturally idempotent operations (`PUT`, `DELETE`). Replay prevention keeps attackers from abusing your system; idempotency makes it robust against unintentional repeats.
 
-Here are the key differences:
+The two concepts do interact: designing for idempotency limits the damage of some replay attacks.
+If an attacker replays a request that carries an idempotency key, e.g. a payment, against an endpoint that deduplicates on that key, the replay has no additional effect, because the system treats it as already handled.
+Similarly, webhook handlers are made idempotent so that a replayed event is processed only once.
 
-Nature of the Problem: A replay attack is a security attack. It involves a malicious actor deliberately reusing data to deceive a system. An idempotency issue is a design flaw or scenario in system logic. It happens when the system doesn’t safely handle identical requests happening more than once, often accidentally (e.g., due to retries or user actions). There’s no inherent malice in idempotency issues, though an attacker could exploit a non-idempotent endpoint to amplify an effect (which essentially becomes a replay attack scenario).
+However, idempotency is not a substitute for security. Deduplication only catches exact repeats within the window for which keys are remembered, and many replayed requests are harmful even when processed once more; a replayed login request, for example, still grants the attacker access.
+Both security measures (to stop malicious replays) and idempotent design (to handle repeats safely) are needed.
 
-Context: Replay attacks are discussed in cybersecurity and cryptography contexts, often concerning authentication tokens, network protocols, or transactions where intercepting communications is possible. Idempotency is discussed in software design and API development contexts, ensuring reliability and consistency of operations (especially in REST APIs, webhooks, and distributed systems). For example, webhooks receivers are made idempotent so that if the sender re-sends an event (a common practice or in case of no ACK), the event isn’t processed twice. This is a best practice, not because of an attacker but to handle normal operation retries.
+## Summary
 
-Goal/Consequence: The attacker’s goal in a replay attack is typically to gain unauthorized benefit, e.g., get a second service for free, duplicate a payment to themselves, or fraudulently log in as someone else. In contrast, an idempotency issue’s consequence is usually an accidental duplication, e.g., the same action being performed twice when it should have been once, which can cause errors (duplicate data, extra charges) but is often due to oversight rather than an attacker’s intent. The outcome might look similar (two payments instead of one), but the cause is different.
+::: {.callout-note title="Summary"}
+A replay attack is a deliberate security attack in which captured, valid messages are resent to repeat an action or impersonate a user; it is prevented with freshness mechanisms such as nonces, timestamps, short-lived tokens, and signatures. Idempotency is a design property: an idempotent operation has the same effect no matter how many times it is performed. Idempotency issues are accidental duplicate effects, caused by retries or repeated user actions on non-idempotent operations, and are prevented with idempotent designs and idempotency keys. Idempotency limits the damage of some replays, but it does not replace security controls; robust systems need both.
+:::
 
-Prevention/Mitigation: To prevent replay attacks, the emphasis is on security measures like nonce values, one-time tokens, timestamps, and encrypted signatures to ensure each request is unique and can’t be replayed out of context. On the other hand, to prevent idempotency issues, developers design their APIs and operations to be idempotent or to explicitly handle duplicates, for example, using idempotency keys, checking if an action has already been performed, or making certain operations inherently idempotent (like using PUT to update or DELETE which won’t double-delete). Essentially, replay attack prevention is about keeping attackers from abusing your system, while idempotency is about making your system robust against unintentional repeats (and as a bonus, this robustness also helps if an attacker does try a replay).
+## References
 
-It’s worth noting the interplay between these concepts: designing for idempotency can limit the damage of a replay attack.
-
-If an attacker tries to replay a request against an idempotent endpoint, the attack is largely ineffective because the system will treat the repeated message as already handled.
-
-In webhook security, for example, it’s recommended to make your handlers idempotent so that if a malicious actor does replay a past webhook event, your system processes it only once and ignores duplicates.
-
-If your endpoints are already idempotent, you won’t be impacted by a replay attack; any repeated message (even if fraudulent) would have no additional effect.
-
-However, pure idempotency is not a substitute for security in all cases; it should complement other measures.
-
-An attacker could still abuse a non-authenticated idempotent endpoint in other ways, and idempotency doesn’t stop an attacker from attempting the replay. It just prevents harmful side-effects.
-
-Therefore, both security tactics (to stop malicious replays) and idempotent design (to handle repeats safely) are important.
+1. [Replay attack](https://en.wikipedia.org/wiki/Replay_attack)
+2. [Idempotence](https://en.wikipedia.org/wiki/Idempotence#Computer_science_meaning)
+3. [RFC 9110: HTTP Semantics, Idempotent Methods](https://www.rfc-editor.org/rfc/rfc9110#name-idempotent-methods)

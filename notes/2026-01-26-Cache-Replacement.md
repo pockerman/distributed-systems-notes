@@ -1,99 +1,91 @@
-# qubit-note: Distributed Systems Series | Caching Part 3 | Cache Replacement
-
+# Caching Part 3 | Cache Replacement
 
 ## Overview
 
-<a href="software_engineering/2026-01-21-cache-coherency.md">qubit-note: Distributed Systems Series | Caching Part 2 | Cache Coherence</a> discussed the notion of 
-cache coherency i.e. how multiple caches can maintain a uniform view of the cached data. A cache however only has a certain capacity and when this
-capacity is reached we need somehow update the cache. In this note, we will review some cache replacement techniques or <a href="https://en.wikipedia.org/wiki/Cache_replacement_policies">cache replacement policies</a>. We will be discussing the following policies:
+[Caching Part 2 | Cache Coherence](2026-01-21-cache-coherency.md) discussed
+cache coherence, i.e. how multiple caches can maintain a uniform view of the cached data. A cache, however, has a limited capacity, and when this
+capacity is reached we must decide what to remove. In this note we review some [cache replacement policies](https://en.wikipedia.org/wiki/Cache_replacement_policies):
 
 - Least recently used (LRU)
 - Least frequently used (LFU)
 - First-in, first-out (FIFO)
 - SIEVE
 
-**keywords** software-architecture, system-design, distributed-systems, caching, data-replication
+We also discuss time-to-live (TTL) expiry.
 
 ## Cache replacement
 
-The purpose of caching is to reduce the access latency by introducing a temporary copy of the data that is faster to access than the 
-primary storage [2]. The caching layer therefore will be typically  located in a proximity with to the access point.
-Caching however is typically expensive as the cache memory is more expensive than disk storage. For
-example the the price per gigabyte for DRAM is ten times higher than that of SSDs [2].
-As a result we can only cache a rather limited size of the data.
+The purpose of caching is to reduce access latency by keeping a temporary copy of the data that is faster to access than the
+primary storage [2]. The caching layer is therefore typically located close to where the data is accessed.
+Cache memory is, however, more expensive than disk storage; for
+example, the price per gigabyte of DRAM is about ten times higher than that of SSDs [2].
+As a result, we can only cache a limited portion of the data.
 
-However, when the cache is fully occupied, some elements have to be evicted from it.
-This is where  the cache replacement policy determines what we throw out from the cache. 
-Choosing the right cache replacement policy is critical for maintaining a high cache hit ratio and, therefore, low-latency
-access, but the decision can be workload-specific [2]. Typically the replacement policy is based on how long the element
-has been in the cache or how frequently it is accessed. Below are some frequently use cache replacement policies.
+When the cache is full, some elements have to be evicted to make room for new ones.
+The cache replacement policy determines which elements to evict.
+Choosing the right policy is critical for maintaining a high cache hit ratio and therefore low-latency
+access, and the best choice is workload-specific [2]. Typically, replacement policies are based on how long an element
+has been in the cache, how recently it was used, or how frequently it is accessed. Below are some commonly used policies.
 
+### Least recently used (LRU)
 
-#### Least recently used (LRU)
+The least recently used (LRU) policy evicts the elements that have not been used for the longest time.
+When a cache element is accessed, it is eagerly promoted by moving it to the head of the cache, so that it stays in the cache.
+LRU maintains a high hit ratio for workloads with high
+temporal locality: if recently accessed data is likely to be accessed again
+shortly, LRU keeps that data in the cache. On the other
+hand, if the workload has little locality, LRU can perform worse than not caching at all, because the
+workload brings data into the cache that is never reused, resulting in high overhead from constant caching and evicting [2].
 
-The least recently used (LRU) replacement policy evicts data elements from
-the cache based on them not being used recently. LRU caching can maintain a high hit ratio for workloads with high
-temporal locality. If recently accessed data in the cache is likely to be accessed
-shortly, LRU will ensure that relevant data stays in the cache. On the other
-hand, if your workload has a low degree of locality, LRU can perform worse than not caching at all because your
-workload may bring data to the cache that you never reuse, resulting in high Least recently used overhead from caching and evicting.
+### Least frequently used (LFU)
 
+The least frequently used (LFU) policy evicts the elements that are accessed least often.
+Whereas LRU looks at the recency of access, LFU looks at the frequency of access.
+LFU can maintain a high cache hit ratio, and therefore low-latency access, for workloads where some elements are consistently more popular than others, even if their accesses are irregular in time [2].
 
-#### Least frequently used (LFU)
+### First-in, first-out (FIFO)
 
-Another policy is the least frequently used policy whereby data is replaced based on how frequently the are used.
-Hence LRU is looking at the recency of data access but LFU is looking at the fequency of data usage.
-LFU can maintain a high cache hit ratio and, therefore, low-latency access for workloads where access to different elements is irregular [2]. 
-With LRU, when a cache element is accessed, it is eagerly promoted by moving it to the head of the cache to ensure it remains in the cache.
+The first-in, first-out (FIFO) policy evicts elements based on when they were added to the cache [2].
+In contrast to LRU, basic FIFO has no promotion: elements are evicted purely based on insertion order, regardless of how often they are accessed.
+Perhaps surprisingly, FIFO combined with _lazy promotion_ (only marking an element on access, and acting on the mark at eviction time) and _quick demotion_ (evicting new elements quickly unless they prove useful) can outperform LRU [2].
 
+### SIEVE
 
-#### First-in, first-out (FIFO) and SIEVE
-The first-in, first-out (FIFO) replacement policy evicts data elements based on when they were added to the cache [2].
-FIFO replacement uisng lazy promotion and quick demotion can outperform LRU [2].
-In contrast to LRU, the basic FIFO replacement policy has no promotion, as elements are evicted purely based on when they were added. 
+SIEVE is a recent cache replacement policy that is a variant of FIFO with re-insertion (also known as second chance or CLOCK) [2].
+Each element has a "visited" bit that is set on access. An eviction "hand" moves through the FIFO queue from the oldest element towards the newest: if the element under the hand has been visited, its bit is cleared and it is kept; otherwise it is evicted.
+Whereas FIFO with re-insertion moves a visited element back to the head of the queue, SIEVE keeps the element in its current position. This lets new elements that are never reused be evicted quickly.
 
+### Time-to-live (TTL)
 
-#### SIEVE
+The replacement policies we looked at above determine which elements to remove when the cache is full.
+Sometimes, however, we want to control the freshness of the data even when there is no
+need to evict anything. Time-to-live (TTL) limits how
+long an element can stay in the cache before it is considered stale and purged.
 
-This is another cache replacement policy that is actually a variant of FIFO with re-insertion [2].
-Whereas FIFO with re-insertion adds elements at the head of the FIFO queue, SIEVE retains the element’s position at re-insertion. 
+TTL is a very simple approach to cache invalidation.
+In particular, if you are not using [write-through or write-behind caching](2026-01-20-Caching.md),
+where updates to the data go through the cache, making sure that updates to the backing store are reflected in the cache can be complex.
+TTL side-steps this problem by letting entries live in the cache only for a limited time, after which the application must retrieve the data from the database
+or backing store again [2].
 
-
-#### Time-to-live (TTL)
-
-The replacement policies we looked at above determine whic elements should be removed.
-However, sometimes we want to be able to control the freshness of the data, even when there is no
-need to evict anything. The time-to-live  is a mechanism used in caching to limit how
-long a cached element can stay in the cache before it is considered stale and, therefore, is purged from the cache.
-
-TTL is a very simple approach to invalidate cache entries
-In particular, if you are not using <a href="2026-01-20-Caching.md">write-through or write-behind caching</a>, 
-where updates to the data go through the cache, making sure backing storage updates are reflected in the cache can be complex.
-TTL solves the invalidation problem by simply allowing entries in the cache to remain live for a limited time, after which the application must retrieve data from the database
-or backing store [2]. 
-
-Although TTL is very simple it does have some downsides [2]. 
-Specifically,picking the correct value for TTL can be tricky and can seriously affect the performance of the applicaiton if we get it wrong.
-As a rule of thumb, TTL is great for caching data that only changes some of the time, but it is often tricky for more dynamic data.
-
+Although TTL is simple, it has downsides [2].
+Picking the right TTL value is tricky and can seriously affect the performance of the application if we get it wrong: too short and the hit ratio drops, too long and clients see stale data.
+As a rule of thumb, TTL is great for caching data that changes only occasionally, but it is tricky for highly dynamic data.
 
 ## Summary
 
-Here’s a concise summary of the text:
+::: {.callout-note title="Summary"}
+Cache replacement policies decide which data to evict when a cache reaches capacity. Because caches are expensive and limited in size, choosing the right policy is critical for a high cache hit ratio and low latency, and the best choice depends on the workload.
 
-The note explains **cache replacement policies**, which decide what data to evict when a cache reaches capacity. Because caches are expensive and limited in size, choosing the right replacement strategy is critical for achieving a high cache hit ratio and low latency, and the best choice often depends on workload characteristics.
+- Least Recently Used (LRU): evicts the items that haven't been accessed for the longest time and promotes items on access. It works well for workloads with strong temporal locality but can perform poorly when data is rarely reused.
+- Least Frequently Used (LFU): evicts the items that are accessed least often, focusing on frequency rather than recency.
+- First-In, First-Out (FIFO): evicts items in insertion order, with no promotion on access. With lazy promotion and quick demotion, FIFO-based policies can outperform LRU.
+- SIEVE: a FIFO variant with a "visited" bit, where retained elements keep their position instead of moving to the head of the queue.
 
-It reviews several common policies:
-
-- Least Recently Used (LRU): Evicts items that haven’t been accessed recently. It works well for workloads with strong temporal locality but can perform poorly when data is rarely reused.
-- Least Frequently Used (LFU): Evicts items that are accessed least often, focusing on usage frequency rather than recency. It can be effective for irregular access patterns.
-- First-In, First-Out (FIFO): Evicts items in the order they were added, with no promotion on access. Despite its simplicity, FIFO with optimizations like lazy promotion can outperform LRU in some cases.
-* **SIEVE:** A variant of FIFO with re-insertion, where reinserted elements keep their position instead of moving to the head.
-
-The note also discusses Time-to-Live (TTL), which limits how long cache entries remain valid regardless of cache pressure. TTL simplifies cache invalidation and freshness management, especially when writes do not go through the cache, but choosing an appropriate TTL value is difficult and can negatively impact performance if set incorrectly. TTL works best for data that changes infrequently.
-
+Time-to-Live (TTL) limits how long entries remain valid regardless of cache pressure. It simplifies cache invalidation, especially when writes do not go through the cache, but choosing a good TTL value is difficult. TTL works best for data that changes infrequently.
+:::
 
 ## References
 
-1. <a href="https://en.wikipedia.org/wiki/Cache_replacement_policies">Cache replacement policies</a>
-2. Pekka Enberg, _Latency Reduce delay in software systems_ Manning Publications
+1. [Cache replacement policies](https://en.wikipedia.org/wiki/Cache_replacement_policies)
+2. Pekka Enberg, _Latency: Reduce delay in software systems_, Manning Publications
