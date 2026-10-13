@@ -1,4 +1,4 @@
-# SQL Isolation Levels
+# Lesson 29: SQL Isolation Levels
 
 ## Overview
 
@@ -55,7 +55,7 @@ Repeatable Read is a stricter level which ensures that if a transaction reads th
 There are two common implementations:
 
 - **Locking:** shared locks are held on the rows a transaction reads until it completes, so no other transaction can modify them in the meantime.
-- **Snapshots (MVCC):** the transaction reads from a snapshot taken at its start; other transactions can still modify the rows, but this transaction doesn't see their changes (see [Multi-Version Concurrency Control](2026-09-09-Multi-Version-Concurrency-Control.md)).
+- **Snapshots (MVCC):** the transaction reads from a snapshot taken at its start; other transactions can still modify the rows, but this transaction doesn't see their changes (see [Lesson 30: Multi-Version Concurrency Control](2026-09-09-Multi-Version-Concurrency-Control.md)).
 
 Either way, dirty reads and non-repeatable reads are prevented.
 In the SQL standard's definition of Repeatable Read, phantom reads are still possible: another transaction can insert or delete rows that satisfy a query's `WHERE` condition, because the locks only cover the rows that were read, not the range of possible rows.

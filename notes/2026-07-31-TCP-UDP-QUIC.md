@@ -1,18 +1,10 @@
-# TCP, UDP & QUIC
+# Lesson 8: UDP & QUIC
 
 ## Overview
 
-TCP, UDP, and QUIC are transport protocols that make different trade-offs between reliability and speed: TCP is reliable and connection-oriented, UDP is lightweight and connectionless (no delivery guarantees), and QUIC runs on top of UDP to offer fast, secure connections with TCP-like reliability.
-Below, we look at what each protocol is, how they differ, and when to use each.
-
-## TCP
-
-The Transmission Control Protocol (TCP) is a connection-oriented protocol that provides reliable, ordered delivery of a byte stream; see [Part 4 | TCP 101](2026-03-17-part-4-TCP_101.md) for the details.
-TCP requires a three-way handshake to establish a connection: the client sends a SYN segment, the server responds with a SYN-ACK, and the client confirms with an ACK. Only after this handshake do the two sides exchange data, which ensures both are ready and have agreed on sequence numbers.
-TCP also acknowledges and retransmits lost segments, reorders out-of-order segments, and performs flow and congestion control.
-
-Because of these features, TCP takes longer to start communicating and adds overhead.
-However, it is the backbone of most internet applications that need accuracy over speed.
+[Lesson 6: TCP](2026-03-17-part-4-TCP_101.md) discussed TCP, the reliable, connection-oriented transport that most applications use. Its guarantees cost a handshake round trip, slow start, head-of-line blocking, and connections that break when the network changes.
+In this lesson we look at the two main alternatives. UDP is lightweight and connectionless, with no delivery guarantees. QUIC runs on top of UDP and offers fast, secure connections with TCP-like reliability.
+We then compare the three protocols and discuss when to use each.
 
 ## UDP
 
@@ -45,12 +37,12 @@ In simple terms, QUIC is a next-generation TCP implemented over UDP, with encryp
 
 One of QUIC's big advantages is connection setup.
 QUIC integrates the transport handshake and the TLS 1.3 handshake into a single step, so a new connection is established in one round trip (1-RTT), compared to two round trips for TCP plus TLS 1.3 (and three with TLS 1.2).
-When a client reconnects to a server it has talked to before, it can even send data in its very first packet (0-RTT). Note that 0-RTT data can be replayed by an attacker, so it should only be used for idempotent requests (see [Replay Attack vs Idempotency Issues](2026-07-30-Replay-Attack-Idempotency.md)).
+When a client reconnects to a server it has talked to before, it can even send data in its very first packet (0-RTT). Note that 0-RTT data can be replayed by an attacker, so it should only be used for idempotent requests (see [Lesson 40: Replay Attack vs Idempotency Issues](2026-07-30-Replay-Attack-Idempotency.md)).
 The result is lower latency, which is especially beneficial for web pages and API calls.
 
 ### Encryption by default
 
-QUIC has encryption built in: all QUIC connections use TLS 1.3, and there is no unencrypted mode.
+QUIC has encryption built in: all QUIC connections use TLS 1.3 (see [Lesson 7: TLS 101](2026-04-06-Part-5-TLS-101.md)), and there is no unencrypted mode.
 QUIC also encrypts most of its packet header, unlike TCP, whose headers travel in the clear. This improves privacy and prevents middleboxes on the network from inspecting or interfering with the transport, which in turn makes it easier to evolve the protocol.
 
 ### Stream multiplexing without head-of-line blocking
@@ -70,6 +62,8 @@ In summary, QUIC is a UDP-based, encrypted protocol that provides TCP-like relia
 Major services such as Google's and Meta's use it heavily, and browsers and CDNs that support HTTP/3 use QUIC to load pages faster and more reliably on poor networks.
 
 ## Key differences
+
+The table below compares UDP and QUIC with TCP as the baseline.
 
 | Aspect | TCP | UDP | QUIC |
 |---|---|---|---|
@@ -95,12 +89,7 @@ In essence, TCP gives you tried-and-true reliability, UDP gives you raw speed an
 
 Choosing between TCP, UDP, and QUIC depends on the needs of your application.
 
-**Use TCP** when you need reliable, ordered delivery and cannot tolerate data loss, and when accuracy is more important than speed. Typical use cases:
-
-- Web pages and file downloads: every byte must arrive intact, since a missing packet could break a page or corrupt a file.
-- Email and messaging: protocols like SMTP and IMAP use TCP so that messages arrive complete.
-- Financial transactions and critical data: banking, payments, and database connections, where data integrity is paramount.
-- General client-server APIs: TCP (with TLS) is the default for request/response APIs because it handles retransmission and ordering for you.
+**Use TCP** when you need reliable, ordered delivery and accuracy is more important than speed: web pages, file downloads, email, payments, database connections, and most request/response APIs. See [Lesson 6: TCP](2026-03-17-part-4-TCP_101.md#when-to-use-tcp).
 
 **Use UDP** when you need fast, lightweight communication and can tolerate some loss or reordering:
 
@@ -123,12 +112,13 @@ Many applications combine protocols. A video conferencing app, for example, typi
 ## Summary
 
 ::: {.callout-note title="Summary"}
-TCP, UDP, and QUIC serve different needs. TCP is the reliable workhorse for when accuracy and ordering matter more than speed: it is connection-oriented, retransmits lost data, and controls congestion, at the cost of handshake latency and head-of-line blocking. UDP is the lightweight courier for when speed matters and occasional loss is acceptable: it is connectionless, has no delivery guarantees or congestion control, and supports multicast. QUIC is the modern hybrid: built on UDP, it provides reliable, encrypted, multiplexed streams with a faster handshake, no head-of-line blocking between streams, and connection migration, which makes it the transport of HTTP/3. Choosing between them depends on the application's needs (real-time vs. bulk data), network conditions, and client support.
+UDP and QUIC are the alternatives to TCP, the reliable workhorse for when accuracy and ordering matter more than speed. UDP is the lightweight courier for when speed matters and occasional loss is acceptable: it is connectionless, has no delivery guarantees or congestion control, and supports multicast. QUIC is the modern hybrid: built on UDP, it provides reliable, encrypted, multiplexed streams with a faster handshake, no head-of-line blocking between streams, and connection migration, which makes it the transport of HTTP/3. Choosing between them depends on the application's needs (real-time vs. bulk data), network conditions, and client support.
 :::
+
+The next lesson discusses the [Domain Name System](2025-04-18-part-6-domain-name-system.md), which uses UDP for most of its queries.
 
 ## References
 
-1. [RFC 9293: Transmission Control Protocol](https://www.rfc-editor.org/rfc/rfc9293)
-2. [RFC 768: User Datagram Protocol](https://www.rfc-editor.org/rfc/rfc768)
-3. [RFC 9000: QUIC: A UDP-Based Multiplexed and Secure Transport](https://www.rfc-editor.org/rfc/rfc9000)
-4. Roberto Vitillo, _Understanding Distributed Systems: What every developer should know about large distributed applications_
+1. [RFC 768: User Datagram Protocol](https://www.rfc-editor.org/rfc/rfc768)
+2. [RFC 9000: QUIC: A UDP-Based Multiplexed and Secure Transport](https://www.rfc-editor.org/rfc/rfc9000)
+3. Roberto Vitillo, _Understanding Distributed Systems: What every developer should know about large distributed applications_

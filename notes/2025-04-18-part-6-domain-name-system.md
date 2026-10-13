@@ -1,8 +1,8 @@
-# Part 6 | Domain Name System
+# Lesson 9: Domain Name System
 
 ## Overview
 
-We now know how to communicate reliably (see [Part 4 | TCP 101](2026-03-17-part-4-TCP_101.md)) and securely (see [Part 5 | TLS 101](2026-04-06-Part-5-TLS-101.md)) between two processes located on different machines. However, in order to do this we first need to discover the IP address of the remote process we want to connect to.
+We now know how to communicate reliably (see [Lesson 6: TCP](2026-03-17-part-4-TCP_101.md)) and securely (see [Lesson 7: TLS 101](2026-04-06-Part-5-TLS-101.md)) between two processes located on different machines. However, in order to do this we first need to discover the IP address of the remote process we want to connect to.
 For this we use the [Domain Name System](https://en.wikipedia.org/wiki/Domain_Name_System), or DNS. DNS is a distributed, hierarchical and eventually consistent key-value store [5].
 
 ## Domain name system
@@ -24,7 +24,7 @@ of different types of servers:
 - Top-level domain (TLD) name servers
 - Authoritative name servers
 
-I won't cover the details of these in this note. However, I want to answer the following simple question:
+I won't cover the details of these in this lesson. However, I want to answer the following simple question:
 
 _How does the browser know the address of the DNS resolver?_
 

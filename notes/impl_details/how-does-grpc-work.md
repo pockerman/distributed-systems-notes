@@ -1,6 +1,6 @@
 # How Does gRPC Work?
 
-This note is adapted from ByteByteGo's _How does gRPC work?_ guide (2024) [1]. See [Part 7 | APIs](../2026-04-09-Part-7-API.md) for an introduction to gRPC.
+This note is adapted from ByteByteGo's _How does gRPC work?_ guide (2024) [1]. See [Lesson 10: APIs](../2026-04-09-Part-7-API.md) for an introduction to gRPC.
 
 ![The data flow of a gRPC call. Image from ByteByteGo [1].](0210-grpc.png)
 

@@ -1,8 +1,8 @@
-# Design Concepts Part 2
+# Lesson 4: Design Concepts Part 2
 
 ## Overview
 
-In this note we look into the following concepts:
+In this lesson we look into the following concepts:
 
 - Caching: temporarily store frequently used data to speed up future access.
 - Data partitioning: split large datasets into smaller chunks (shards) to spread the load across servers.
@@ -10,7 +10,7 @@ In this note we look into the following concepts:
 - Distributed messaging systems: enable services to communicate asynchronously by sending messages via a broker (e.g. Kafka, RabbitMQ).
 - Microservices: an architecture in which features are split into small, independent services that work together.
 
-The material in this note is primarily taken from [1].
+The material in this lesson is primarily taken from [1].
 
 ## Design concepts part 2
 
@@ -22,7 +22,7 @@ Note that we can also use [negative caching](2026-04-28-Negative-Caching.md), i.
 
 ### Data partitioning
 
-Database partitioning improves scalability and performance by splitting data into smaller parts. Horizontal partitioning, also known as sharding, divides the rows of a table across multiple servers or database instances, distributing traffic and storage load. Vertical partitioning instead splits a table by columns, placing different groups of columns into separate tables to reduce table width and speed up queries that only need a subset of the data. Horizontal partitioning scales data volume and throughput, while vertical partitioning improves query efficiency and reduces unnecessary data access. See [Partitioning](2025-08-04-partitioning.md).
+Database partitioning improves scalability and performance by splitting data into smaller parts. Horizontal partitioning, also known as sharding, divides the rows of a table across multiple servers or database instances, distributing traffic and storage load. Vertical partitioning instead splits a table by columns, placing different groups of columns into separate tables to reduce table width and speed up queries that only need a subset of the data. Horizontal partitioning scales data volume and throughput, while vertical partitioning improves query efficiency and reduces unnecessary data access. See [Lesson 28: Partitioning](2025-08-04-partitioning.md).
 
 ![Horizontal and vertical data partitioning. Image from [1].](imgs/data_partitioning.webp)
 
@@ -32,16 +32,16 @@ Database replication maintains multiple synchronized copies of the same database
 
 ### Distributed messaging systems
 
-Distributed messaging systems are infrastructure components that enable reliable, scalable, and fault-tolerant communication between distributed applications and services. They decouple message producers from consumers, letting different parts of a system operate independently and communicate asynchronously. This improves scalability, resilience, and flexibility, especially in large-scale systems and microservices architectures where services run on different machines or in different regions. Messaging systems also help absorb traffic spikes (see load leveling in [Upstream Resiliency](2026-02-09-Upstream-Resiliency.md)), retry failed work, and build event-driven workflows. Popular examples include Apache Kafka and RabbitMQ.
+Distributed messaging systems are infrastructure components that enable reliable, scalable, and fault-tolerant communication between distributed applications and services. They decouple message producers from consumers, letting different parts of a system operate independently and communicate asynchronously. This improves scalability, resilience, and flexibility, especially in large-scale systems and microservices architectures where services run on different machines or in different regions. Messaging systems also help absorb traffic spikes (see load leveling in [Lesson 34: Upstream Resiliency](2026-02-09-Upstream-Resiliency.md)), retry failed work, and build event-driven workflows. Popular examples include Apache Kafka and RabbitMQ.
 
 ### Microservices
 
-Microservices are an architectural approach in which an application is built as a collection of small, loosely coupled, independently deployable services, each responsible for a specific business capability. Unlike monolithic systems, microservices let teams develop, deploy, and scale services independently, improving flexibility, maintainability, and development speed. Each service typically owns its own data and business logic, while services communicate through lightweight protocols such as HTTP/REST, gRPC, or messaging systems. Because services run independently, a failure in one service is less likely to bring down the entire application, provided that the callers use resiliency techniques such as timeouts and circuit breakers (see [Downstream Resiliency](2026-02-04-Downstream-Resiliency.md)). The price is the complexity of operating a distributed system.
+Microservices are an architectural approach in which an application is built as a collection of small, loosely coupled, independently deployable services, each responsible for a specific business capability. Unlike monolithic systems, microservices let teams develop, deploy, and scale services independently, improving flexibility, maintainability, and development speed. Each service typically owns its own data and business logic, while services communicate through lightweight protocols such as HTTP/REST, gRPC, or messaging systems. Because services run independently, a failure in one service is less likely to bring down the entire application, provided that the callers use resiliency techniques such as timeouts and circuit breakers (see [Lesson 33: Downstream Resiliency](2026-02-04-Downstream-Resiliency.md)). The price is the complexity of operating a distributed system.
 
 ## Summary
 
 ::: {.callout-note title="Summary"}
-This note covered several core concepts used to build scalable and reliable applications. Caching improves performance by keeping frequently accessed data close to the application. Data partitioning splits large datasets horizontally (sharding rows across servers) or vertically (splitting columns into separate tables) to improve scalability and query efficiency. Data replication keeps synchronized copies of databases on multiple servers to increase availability, fault tolerance, and read performance. Distributed messaging systems such as Apache Kafka and RabbitMQ enable asynchronous communication between independent services. Finally, microservices organize applications into small, independently deployable services, letting teams develop and scale them independently and improving fault isolation, at the cost of operational complexity.
+This lesson covered several core concepts used to build scalable and reliable applications. Caching improves performance by keeping frequently accessed data close to the application. Data partitioning splits large datasets horizontally (sharding rows across servers) or vertically (splitting columns into separate tables) to improve scalability and query efficiency. Data replication keeps synchronized copies of databases on multiple servers to increase availability, fault tolerance, and read performance. Distributed messaging systems such as Apache Kafka and RabbitMQ enable asynchronous communication between independent services. Finally, microservices organize applications into small, independently deployable services, letting teams develop and scale them independently and improving fault isolation, at the cost of operational complexity.
 :::
 
 ## References

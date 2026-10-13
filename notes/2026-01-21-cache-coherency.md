@@ -1,8 +1,8 @@
-# Caching Part 2 | Cache Coherence
+# Lesson 18: Cache Coherence
 
 ## Overview
 
-In this note we discuss cache coherence, i.e. how multiple caches can maintain a uniform view of the cached data.
+In this lesson we discuss cache coherence, i.e. how multiple caches can maintain a uniform view of the cached data.
 We also introduce the cache hit ratio and the working set.
 
 ## Cache coherence

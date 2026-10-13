@@ -1,14 +1,14 @@
-# Design a Rate Limiter
+# Lesson 42: Design a Rate Limiter
 
 ## Overview
 
-We looked into various techniques for improving the upstream resiliency of a system in [Upstream Resiliency](2026-02-09-Upstream-Resiliency.md).
+We looked into various techniques for improving the upstream resiliency of a system in [Lesson 34: Upstream Resiliency](2026-02-09-Upstream-Resiliency.md).
 One of them was rate limiting. Since rate limiting is ubiquitous in modern systems, we discuss it a bit further here,
 and look at how we could design a rate limiter.
 
 ## Rate limiting
 
-Recall from [Upstream Resiliency](2026-02-09-Upstream-Resiliency.md) that with rate limiting, or throttling, the server rejects a request when a specific quota is exceeded [1].
+Recall from [Lesson 34: Upstream Resiliency](2026-02-09-Upstream-Resiliency.md) that with rate limiting, or throttling, the server rejects a request when a specific quota is exceeded [1].
 Whether the threshold is enforced strictly, or requests are allowed to exceed it for a short period of time, distinguishes hard from soft rate limiting [2].
 We can apply rate limiting at various levels of the stack, for example at the HTTP layer, or by IP address at the network layer using iptables, see e.g. [3].
 There are a number of algorithms for implementing rate limiting [2]:
@@ -23,7 +23,7 @@ As a client, you should try not to get rate limited, as this affects the user ex
 
 - Know the limits of the external APIs you are using.
 - Use caches to avoid frequent API calls.
-- Add sufficient backoff time to your retry logic (see [Downstream Resiliency](2026-02-04-Downstream-Resiliency.md)).
+- Add sufficient backoff time to your retry logic (see [Lesson 33: Downstream Resiliency](2026-02-04-Downstream-Resiliency.md)).
 - Always catch and handle the errors returned when you are rate limited.
 
 ::: {.callout-note title="Rate limiter headers"}

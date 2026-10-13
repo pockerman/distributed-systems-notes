@@ -1,8 +1,8 @@
-# Sharded Counters
+# Lesson 16: Sharded Counters
 
 ## Overview
 
-In this note we discuss the sharded counters pattern. We can use this pattern whenever
+In this lesson we discuss the sharded counters pattern. We can use this pattern whenever
 we need to scale counting in our system. It is also a building block for problems such as top-k (e.g. most liked posts).
 
 ## Sharded counters

@@ -1,4 +1,4 @@
-# Partitioning
+# Lesson 28: Partitioning
 
 ## Overview
 
@@ -11,7 +11,7 @@ Partitioning divides a dataset into smaller pieces, each of which can be accesse
 Partitioning as a technique applies to many situations, e.g. a [load balancer](2025-04-21-load-balancing.md) partitions TCP connections across servers [1].
 In general, by partitioning a system we try to remove the scalability limits of a single component [2].
 
-In this note I discuss the most common partitioning approaches.
+In this lesson I discuss the most common partitioning approaches.
 On a related topic, see [Training Patterns for Distributed ML](https://github.com/pockerman/qubit-notes/blob/main/ml/2025-05-11-training-patterns-for-distributed-ML.md) and
 [Data Ingestion Patterns for Distributed ML](https://github.com/pockerman/qubit-notes/blob/main/ml/2025-05-07-data-ingestion-patterns-for-dist-ml.md).
 

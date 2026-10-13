@@ -1,9 +1,9 @@
-# Resiliency Part 1 | Failure Causes
+# Lesson 32: Failure Causes
 
 ## Overview
 
-In this part of the series we discuss how to make a distributed system more resilient to failure.
-To do so we first need to know the most common causes of failure in a distributed system. In this note we discuss:
+In this lesson we discuss how to make a distributed system more resilient to failure.
+To do so we first need to know the most common causes of failure in a distributed system. In this lesson we discuss:
 
 - Single points of failure
 - Unreliable networks
@@ -55,7 +55,7 @@ A system is typically designed with a certain load in mind. In practice, the act
 ## Summary
 
 ::: {.callout-note title="Summary"}
-Building resilient distributed systems starts with understanding how they fail. This note covered four major failure causes:
+Building resilient distributed systems starts with understanding how they fail. This lesson covered four major failure causes:
 
 - Single points of failure (SPFs): components whose failure brings down the whole system
 - Unreliable networks: requests and responses can be dropped or delayed, and a client can't tell why no response arrived

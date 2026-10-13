@@ -1,8 +1,8 @@
-# Load Balancing
+# Lesson 35: Load Balancing
 
 ## Overview
 
-In this note I go over [load balancing](https://en.wikipedia.org/wiki/Load_balancing_(computing)) approaches. Modern systems have to
+In this lesson I go over [load balancing](https://en.wikipedia.org/wiki/Load_balancing_(computing)) approaches. Modern systems have to
 deal with heavy load and traffic, which means the work has to be distributed over a number
 of workers. A load balancer partitions the incoming traffic in one way or another so that no single machine gets overloaded.
 

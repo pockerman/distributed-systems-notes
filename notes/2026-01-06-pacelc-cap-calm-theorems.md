@@ -1,8 +1,8 @@
-# Data Replication Part 6 | PACELC, CAP and CALM Theorems
+# Lesson 25: PACELC, CAP and CALM Theorems
 
 ## Overview
 
-In this note we look into three results that apply to distributed systems:
+In this lesson we look into three results that apply to distributed systems:
 
 - The [CAP theorem](https://en.wikipedia.org/wiki/CAP_theorem)
 - The [PACELC design principle](https://en.wikipedia.org/wiki/PACELC_design_principle)

@@ -1,4 +1,4 @@
-# Write-Ahead Log
+# Lesson 31: Write-Ahead Log
 
 ## Overview
 

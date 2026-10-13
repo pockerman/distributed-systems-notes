@@ -1,15 +1,15 @@
-# Data Replication Part 2 | Consistency Models
+# Lesson 22: Consistency Models
 
 ## Overview
 
-In [Data Replication Part 1](2025-04-22-data-replication.md) we discussed data replication
+In [Lesson 21: Replication Strategies](2025-04-22-data-replication.md) we discussed data replication
 as a means of increasing a system's availability and improving its performance. Data replication refers to maintaining multiple copies of the same
 data in such a way that client applications perceive them as a single object. This is referred to as _replication transparency_.
 
 However, data replication is not easy, as the copies have to be kept consistent. Consistency models therefore play a dominant role
 in how data is replicated.
 
-In this note I give a brief overview of the most common [consistency models](https://en.wikipedia.org/wiki/Consistency_model) used when designing distributed systems.
+In this lesson I give a brief overview of the most common [consistency models](https://en.wikipedia.org/wiki/Consistency_model) used when designing distributed systems.
 The choice of model depends heavily on the application requirements, so this is not a discussion
 of which model is better but rather a description of the attributes of each. We will discuss the following models:
 
@@ -74,7 +74,7 @@ It is up to the system architect to decide which consistency model to use. A sys
 model; it can mix them depending on the requirements of each subsystem.
 :::
 
-The next part discusses [state machine replication](2025-12-30-state-machine-replication.md).
+The next lesson discusses [state machine replication](2025-12-30-state-machine-replication.md).
 
 ## References
 

@@ -1,8 +1,8 @@
-# Little's Law
+# Lesson 14: Little's Law
 
 ## Overview
 
-In this note we discuss Little's law,
+In this lesson we discuss Little's law,
 a simple result from queueing theory which states that the average number of items in a system equals the average arrival rate multiplied by the average time each item spends in the system [1].
 
 ## Little's law

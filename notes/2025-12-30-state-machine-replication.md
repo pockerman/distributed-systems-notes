@@ -1,8 +1,8 @@
-# Data Replication Part 3 | State Machine Replication
+# Lesson 23: State Machine Replication
 
 ## Overview
 
-In this note we discuss [state machine replication](https://en.wikipedia.org/wiki/State_machine_replication) (SMR).
+In this lesson we discuss [state machine replication](https://en.wikipedia.org/wiki/State_machine_replication) (SMR).
 This is a technique for implementing a fault-tolerant service by replicating servers and coordinating client interactions with the server replicas.
 It also provides a framework for understanding and designing replication management protocols [1], so it is very relevant to the
 discussion of data replication. In fact, the Raft replication algorithm is based on state machine replication [2].
@@ -10,7 +10,7 @@ discussion of data replication. In fact, the Raft replication algorithm is based
 State machine replication works under a simple principle: if two identical, deterministic processes begin in the same state and receive the same inputs in the same order, they will
 produce the same output and reach the same state [4].
 
-For our purposes, we can view state machine replication as another replication strategy (see [Data Replication Part 1](2025-04-22-data-replication.md)).
+For our purposes, we can view state machine replication as another replication strategy (see [Lesson 21: Replication Strategies](2025-04-22-data-replication.md)).
 
 ## State machine replication
 
@@ -56,7 +56,7 @@ $2f+1$ replicas tolerates $f$ failures, since the remaining $f+1$ nodes still fo
 SMR relies on consensus algorithms such as Paxos, Raft, and Viewstamped Replication to agree on the order of commands, even under failures or network partitions. It provides strong consistency and fault tolerance, but adds latency compared to simpler replication strategies.
 :::
 
-In the next note we discuss [consensus](2025-12-31-consensus.md).
+In the next lesson we discuss [consensus](2025-12-31-consensus.md).
 
 ## References
 

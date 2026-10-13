@@ -1,4 +1,4 @@
-# Replay Attack vs Idempotency Issues
+# Lesson 40: Replay Attack vs Idempotency Issues
 
 ## Overview
 
@@ -27,7 +27,7 @@ In contrast to a replay attack, idempotency is not an attack but a property of a
 An operation is idempotent if performing it multiple times has the same effect as performing it once.
 In practical terms, repeating the action doesn't change the result beyond the first execution.
 
-The classic examples come from HTTP API design (see [HTTP](2026-04-09-Part-8-HTTP.md)): a `GET` request is idempotent (no matter how many times you send it, you retrieve the data without side effects), and so is updating a record with `PUT` (sending the same update twice leaves the record in the same final state).
+The classic examples come from HTTP API design (see [Lesson 11: HTTP](2026-04-09-Part-8-HTTP.md)): a `GET` request is idempotent (no matter how many times you send it, you retrieve the data without side effects), and so is updating a record with `PUT` (sending the same update twice leaves the record in the same final state).
 On the other hand, creating a new entry with `POST` is typically not idempotent: calling it multiple times can create duplicate entries.
 
 ### Idempotency issues

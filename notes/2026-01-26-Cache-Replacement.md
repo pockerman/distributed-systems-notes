@@ -1,10 +1,10 @@
-# Caching Part 3 | Cache Replacement
+# Lesson 19: Cache Replacement
 
 ## Overview
 
-[Caching Part 2 | Cache Coherence](2026-01-21-cache-coherency.md) discussed
+[Lesson 18: Cache Coherence](2026-01-21-cache-coherency.md) discussed
 cache coherence, i.e. how multiple caches can maintain a uniform view of the cached data. A cache, however, has a limited capacity, and when this
-capacity is reached we must decide what to remove. In this note we review some [cache replacement policies](https://en.wikipedia.org/wiki/Cache_replacement_policies):
+capacity is reached we must decide what to remove. In this lesson we review some [cache replacement policies](https://en.wikipedia.org/wiki/Cache_replacement_policies):
 
 - Least recently used (LRU)
 - Least frequently used (LFU)

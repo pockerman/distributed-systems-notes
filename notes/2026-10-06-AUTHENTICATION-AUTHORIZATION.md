@@ -1,9 +1,9 @@
-# Authentication & Authorization for APIs
+# Lesson 38: Authentication & Authorization for APIs
 
 ## Overview
 
-In [Part 7 | APIs](2026-04-09-Part-7-API.md) we discussed the options for exposing a service to the outside world.
-By doing so, however, we open the door to a range of security problems. In this note we discuss how to protect an API,
+In [Lesson 10: APIs](2026-04-09-Part-7-API.md) we discussed the options for exposing a service to the outside world.
+By doing so, however, we open the door to a range of security problems. In this lesson we discuss how to protect an API,
 namely with authentication and authorization.
 
 ## Authentication vs authorization

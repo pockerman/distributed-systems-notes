@@ -1,12 +1,12 @@
-# Container Design Patterns for Distributed Systems
+# Lesson 43: Container Design Patterns for Distributed Systems
 
 ::: {.callout-warning title="Work in progress"}
-This note is a stub.
+This lesson is a stub.
 :::
 
 ## Overview
 
-This note is based on [Container Design Patterns for Distributed Systems](https://blog.bytebytego.com/p/container-design-patterns-for-distributed) [1]. It will cover the following patterns:
+This lesson is based on [Container Design Patterns for Distributed Systems](https://blog.bytebytego.com/p/container-design-patterns-for-distributed) [1]. It will cover the following patterns:
 
 - The sidecar pattern
 - The adapter pattern

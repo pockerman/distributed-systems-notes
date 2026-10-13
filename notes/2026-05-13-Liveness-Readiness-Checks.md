@@ -1,8 +1,8 @@
-# Liveness and Readiness Checks
+# Lesson 37: Liveness and Readiness Checks
 
 ## Overview
 
-In this note we look into another topic related to the resiliency of a distributed system,
+In this lesson we look into another topic related to the resiliency of a distributed system,
 namely:
 
 - Liveness checks

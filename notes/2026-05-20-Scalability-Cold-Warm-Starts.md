@@ -1,8 +1,8 @@
-# Cold & Warm Starts
+# Lesson 15: Cold & Warm Starts
 
 ## Overview
 
-In this note we review two ideas associated with scalability and system behaviour:
+In this lesson we review two ideas associated with scalability and system behaviour:
 cold starts and warm starts.
 
 ## Cold and warm starts

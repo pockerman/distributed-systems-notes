@@ -1,12 +1,12 @@
-# Resiliency Part 3 | Upstream Resiliency
+# Lesson 34: Upstream Resiliency
 
 ## Overview
 
-In [Downstream Resiliency](2026-02-04-Downstream-Resiliency.md) we discussed
+In [Lesson 33: Downstream Resiliency](2026-02-04-Downstream-Resiliency.md) we discussed
 techniques for handling downstream failures, i.e. failures caused by an
 interaction with another service.
 
-In this note we look into how to protect our own service from the clients that call it, e.g. when the service is overloaded. Specifically,
+In this lesson we look into how to protect our own service from the clients that call it, e.g. when the service is overloaded. Specifically,
 we look into:
 
 - [Load shedding](https://en.wikipedia.org/wiki/Load_shedding)
@@ -50,7 +50,7 @@ The text above uses the terms rate limiting, throttling, and quotas somewhat int
 Technically, they are different. See [Difference between Rate Limiting and Throttling and Quotas](https://github.com/pockerman/qubit-notes/blob/main/software_engineering/2026-05-06-API-Basics-Diff-Rate-Limit-Throttling-Quotas.md).
 :::
 
-We discuss rate limiting further in [Design a Rate Limiter](2026-05-21-Resiliency-Hands-On-Design-Rate-Limiter.md).
+We discuss rate limiting further in [Lesson 42: Design a Rate Limiter](2026-05-21-Resiliency-Hands-On-Design-Rate-Limiter.md).
 
 ### Bulkhead
 

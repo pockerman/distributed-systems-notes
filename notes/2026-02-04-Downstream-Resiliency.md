@@ -1,9 +1,9 @@
-# Resiliency Part 2 | Downstream Resiliency
+# Lesson 33: Downstream Resiliency
 
 ## Overview
 
-[Failure Causes](2026-01-28-Failure-Causes.md) introduced
-some common failures in a distributed system. In this note we discuss techniques to address them. Specifically,
+[Lesson 32: Failure Causes](2026-01-28-Failure-Causes.md) introduced
+some common failures in a distributed system. In this lesson we discuss techniques to address them. Specifically,
 we assume that our system depends on another service that we don't necessarily control. How should our system behave when that
 service is down or slow?
 
@@ -76,7 +76,7 @@ Attempt 4 fails. Wait 8 seconds.
 In practice, we also cap the delay at a maximum value and add random _jitter_ to it [1]. Without jitter, all the clients that failed at the same moment retry at the same moments too, producing synchronized load spikes on the recovering service.
 
 ::: {.callout-warning title="Retries and idempotency"}
-Retries are powerful, but they are dangerous for operations with side effects. If you retry a payment request, you must make sure you don't charge the customer twice. To do this safely, generate a unique idempotency key for the operation once, in your business layer, and send the same key with every retry attempt. The payment processor can then recognize and ignore duplicates. See [Replay Attack vs Idempotency Issues](2026-07-30-Replay-Attack-Idempotency.md).
+Retries are powerful, but they are dangerous for operations with side effects. If you retry a payment request, you must make sure you don't charge the customer twice. To do this safely, generate a unique idempotency key for the operation once, in your business layer, and send the same key with every retry attempt. The payment processor can then recognize and ignore duplicates. See [Lesson 40: Replay Attack vs Idempotency Issues](2026-07-30-Replay-Attack-Idempotency.md).
 :::
 
 ### Fallbacks
@@ -155,7 +155,7 @@ Call downstream service (with timeout)
      (repeated failures trip the circuit breaker)
 ```
 
-In the next part, [Upstream Resiliency](2026-02-09-Upstream-Resiliency.md), we see how to protect our system from incoming requests that push it to its limits.
+In the next lesson, [Lesson 34: Upstream Resiliency](2026-02-09-Upstream-Resiliency.md), we see how to protect our system from incoming requests that push it to its limits.
 
 ## References
 

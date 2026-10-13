@@ -1,11 +1,11 @@
-# Part 2 | Challenges in Distributed Systems
+# Lesson 2: Challenges in Distributed Systems
 
 ## Overview
 
-[Part 1 | Introduction to Distributed Systems](2026-02-24-part-1-Intro.md) introduced the idea of a distributed system and gave some examples.
-It also introduced the running example that we will be expanding on in these notes.
+[Lesson 1: Introduction to Distributed Systems](2026-02-24-part-1-Intro.md) introduced the idea of a distributed system and gave some examples.
+It also introduced the running example that we will be expanding on in these lessons.
 
-In this note we briefly discuss the core challenges we need to address when designing a distributed system, and
+In this lesson we briefly discuss the core challenges we need to address when designing a distributed system, and
 relate them to our running example. Designing distributed systems revolves around
 the following challenges [1]:
 
@@ -19,7 +19,7 @@ the following challenges [1]:
 
 ### Communication
 
-In [Part 1](2026-02-24-part-1-Intro.md) we split our imaginary system into two tiers: the web server tier and the database tier.
+In [Lesson 1](2026-02-24-part-1-Intro.md) we split our imaginary system into two tiers: the web server tier and the database tier.
 Now that the two services live on different machines, they need to communicate over the network. This adds uncertainty, as the network is unreliable,
 and it adds latency to our application. Network libraries abstract away the communication details, but we still need to understand how the network stack works,
 because these abstractions leak.
@@ -58,7 +58,7 @@ All of these operations should happen in a way that does not affect the availabi
 Designing distributed systems involves several key challenges that arise when components run on different machines. Communication becomes complex because services (such as a web server and a database) interact over unreliable networks that add latency and uncertainty. Coordination is required when multiple nodes, like the instances of a distributed database, must present a consistent view of the data to clients. Scalability is about handling increasing load, measured through throughput (operations per second) and response time. Resiliency ensures the system keeps functioning despite inevitable failures, keeping availability high. Finally, operations covers running the system in production: testing, monitoring, maintenance, and safely deploying or rolling back changes without disrupting service.
 :::
 
-The next part discusses [inter-process communication](2026-03-16-part-3-OSI_MODEL.md).
+The next lesson discusses [inter-process communication](2026-03-16-part-3-OSI_MODEL.md).
 
 ## References
 

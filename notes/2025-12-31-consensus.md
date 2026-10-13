@@ -1,8 +1,8 @@
-# Data Replication Part 4 | Consensus
+# Lesson 24: Consensus
 
 ## Overview
 
-In this note we discuss [consensus](https://en.wikipedia.org/wiki/Consensus_(computer_science)) in distributed systems. Consensus has many applications, e.g.
+In this lesson we discuss [consensus](https://en.wikipedia.org/wiki/Consensus_(computer_science)) in distributed systems. Consensus has many applications, e.g.
 a set of processes deciding which one should hold a lock or whether to commit a transaction [2]. The [state machine replication](2025-12-30-state-machine-replication.md)
 approach we discussed previously is closely tied to the consensus problem.
 

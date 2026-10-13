@@ -1,4 +1,4 @@
-# Read Repair, Hinted Handoff & Anti-entropy in Eventually Consistent Systems
+# Lesson 27: Read Repair, Hinted Handoff & Anti-entropy in Eventually Consistent Systems
 
 ## Overview
 
@@ -28,7 +28,7 @@ In other words, the act of reading triggers a repair of any discrepancy it detec
 ### How read repair works
 
 1. **Read query.** The client requests some data (e.g., a key). In an eventually consistent database, the coordinator node often sends the read to multiple replicas; for example, with a quorum read (read consistency level $R > 1$) it queries several replica nodes.
-2. **Detecting inconsistency.** The coordinator compares the responses. If all replicas return the same value, the data is consistent. If a replica returns an older value than the others, an inconsistency has been detected. The coordinator determines which version is the most recent using timestamps or vector clocks (see [Common Conflict Resolution Strategies](2026-06-29-Common-Conflict-Resolution-Strategies.md)).
+2. **Detecting inconsistency.** The coordinator compares the responses. If all replicas return the same value, the data is consistent. If a replica returns an older value than the others, an inconsistency has been detected. The coordinator determines which version is the most recent using timestamps or vector clocks (see [Lesson 26: Common Conflict Resolution Strategies](2026-06-29-Common-Conflict-Resolution-Strategies.md)).
 3. **Updating stale replicas.** The coordinator sends the latest data to the stale replicas. Depending on the system, this happens before returning the result to the client (blocking read repair) or in the background.
 4. **Returning the latest value.** The client receives the latest value, possibly after concurrent updates have been resolved. The read may be slightly slower because of the repair step, but future reads are more consistent.
 

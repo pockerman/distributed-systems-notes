@@ -1,4 +1,4 @@
-# Multi-Version Concurrency Control
+# Lesson 30: Multi-Version Concurrency Control
 
 ## Overview
 
@@ -11,7 +11,7 @@ This approach is used by most modern databases, including PostgreSQL, MySQL's In
 When many users access a database at the same time, some form of concurrency control is needed to keep the data consistent.
 Without it, a reader could see half-written data while another user is in the middle of an update.
 Imagine a bank transfer: one step debits an account and another credits a different account. A concurrent reader might catch the system between those steps and see money "disappear".
-The isolation property, the "I" in ACID, is meant to prevent such anomalies by controlling concurrent access (see [SQL Isolation Levels](2026-08-20-SQL-ISOLATION-LEVELS.md)).
+The isolation property, the "I" in ACID, is meant to prevent such anomalies by controlling concurrent access (see [Lesson 29: SQL Isolation Levels](2026-08-20-SQL-ISOLATION-LEVELS.md)).
 
 A traditional solution is locking, for instance making readers wait until a writer finishes (a read-write lock).
 Locking ensures consistency, but it introduces contention: long-running reads block writes, and writes block reads, so transactions wait and throughput drops.

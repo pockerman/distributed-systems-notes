@@ -1,8 +1,8 @@
-# Design a Unique ID Generation System
+# Lesson 41: Design a Unique ID Generation System
 
 ## Overview
 
-In this note I discuss three ways to create unique IDs in a distributed system:
+In this lesson I discuss three ways to create unique IDs in a distributed system:
 
 - Using UUIDs
 - Using a database
@@ -79,7 +79,7 @@ On the flip side, the range handler approach has some disadvantages:
 ## Summary
 
 ::: {.callout-note title="Summary"}
-This note explores three common strategies for generating unique IDs in distributed systems: UUIDs, database auto-increment, and the range handler. UUIDs are simple and need no coordination between servers, but they may be larger than necessary and (in version 4) are not ordered. Databases can generate sequential IDs via `auto_increment`, but scaling this across servers takes extra work, as in Flickr's odd/even ticket servers. The range handler assigns each node a unique block of IDs from a central allocator, enabling low-latency local ID generation without constant coordination, though it wastes unused IDs when nodes fail, relies on a central service, and can stress that service when many nodes request ranges at once.
+This lesson explores three common strategies for generating unique IDs in distributed systems: UUIDs, database auto-increment, and the range handler. UUIDs are simple and need no coordination between servers, but they may be larger than necessary and (in version 4) are not ordered. Databases can generate sequential IDs via `auto_increment`, but scaling this across servers takes extra work, as in Flickr's odd/even ticket servers. The range handler assigns each node a unique block of IDs from a central allocator, enabling low-latency local ID generation without constant coordination, though it wastes unused IDs when nodes fail, relies on a central service, and can stress that service when many nodes request ranges at once.
 :::
 
 ## References

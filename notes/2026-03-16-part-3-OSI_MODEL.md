@@ -1,9 +1,9 @@
-# Part 3 | Inter-Process Communication
+# Lesson 5: Inter-Process Communication
 
 ## Overview
 
 Distributed systems are made of processes that communicate over a network. Inter-process communication (IPC) is therefore at the heart of a distributed system,
-and we need to understand the communication stack when designing one. In this note
+and we need to understand the communication stack when designing one. In this lesson
 we give a high-level overview of what happens behind the scenes when a process communicates with another process.
 
 ## Inter-process communication
@@ -46,7 +46,7 @@ that we understand some of the details of the layers below the one we are workin
 Inter-process communication (IPC) is a core component of distributed systems, enabling processes on different machines to exchange data over a network using protocols organized in layers. The OSI model describes this layered approach with seven layers, from the physical transmission of bits up to the application-level representation of data. The internet uses the simpler four-layer TCP/IP model. When a request such as an HTTP request is sent, it travels through the application layer (protocols like HTTP and DNS), the transport layer (e.g., TCP, using ports for process-to-process communication), the internet layer (IP, routing packets between machines), and the link layer (technologies like Ethernet or Wi-Fi, using MAC addresses). While these abstractions simplify development, they leak in practice, so engineers need to understand the lower layers when diagnosing issues in distributed systems.
 :::
 
-The next part discusses [TCP](2026-03-17-part-4-TCP_101.md).
+The next lesson discusses [TCP](2026-03-17-part-4-TCP_101.md).
 
 ## References
 
