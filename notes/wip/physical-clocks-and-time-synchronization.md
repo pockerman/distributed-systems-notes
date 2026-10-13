@@ -1,4 +1,4 @@
-# Lesson 55: Physical Clocks and Time Synchronization
+# Lesson 54: Physical Clocks and Time Synchronization
 
 ::: {.callout-warning title="Work in progress"}
 This lesson has not been written yet. The outline below lists what it should cover.
@@ -19,9 +19,9 @@ Every server has its own clock, and no two clocks agree exactly. Last-write-wins
 
 ## Related lessons
 
-- [Lesson 26: Common Conflict Resolution Strategies](../2026-06-29-Common-Conflict-Resolution-Strategies.md)
-- [Lesson 41: Design a Unique ID Generation System](../2025-08-14-unique-id-generation.md)
-- [Lesson 54: Snowflake IDs](2026-09-25-SNOWFLAKE-ID.md)
+- [Lesson 25: Common Conflict Resolution Strategies](../2026-06-29-Common-Conflict-Resolution-Strategies.md)
+- [Lesson 40: Design a Unique ID Generation System](../2025-08-14-unique-id-generation.md)
+- [Lesson 53: Snowflake IDs](2026-09-25-SNOWFLAKE-ID.md)
 
 ## References
 

@@ -1,4 +1,4 @@
-# Lesson 71: Deployment Strategies
+# Lesson 70: Deployment Strategies
 
 ::: {.callout-warning title="Work in progress"}
 This lesson has not been written yet. The outline below lists what it should cover.
@@ -19,9 +19,9 @@ Most outages follow a change. Deployment strategies limit how many users a bad r
 
 ## Related lessons
 
-- [Lesson 49: Patterns for Online Schema Changes](2026-09-16-PATTERNS-ONLINE-SCHEMA-CHANGES.md)
-- [Lesson 70: SLIs, SLOs and Error Budgets](slos-and-error-budgets.md)
-- [Lesson 37: Liveness and Readiness Checks](../2026-05-13-Liveness-Readiness-Checks.md)
+- [Lesson 48: Patterns for Online Schema Changes](2026-09-16-PATTERNS-ONLINE-SCHEMA-CHANGES.md)
+- [Lesson 69: SLIs, SLOs and Error Budgets](slos-and-error-budgets.md)
+- [Lesson 36: Liveness and Readiness Checks](../2026-05-13-Liveness-Readiness-Checks.md)
 
 ## References
 

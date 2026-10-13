@@ -1,4 +1,4 @@
-# Lesson 67: Content Delivery Networks
+# Lesson 66: Content Delivery Networks
 
 ::: {.callout-warning title="Work in progress"}
 This lesson has not been written yet. The outline below lists what it should cover.
@@ -19,9 +19,9 @@ A CDN caches content on servers close to users. It cuts latency for static and c
 
 ## Related lessons
 
-- [Lesson 17: Caching Methods](../2026-01-20-Caching.md)
+- [Lesson 16: Caching Methods](../2026-01-20-Caching.md)
 - [Lesson 9: Domain Name System](../2025-04-18-part-6-domain-name-system.md)
-- [Lesson 44: Global Server Load Balancing](2026-05-14-Global-Server-Load-Balancing.md)
+- [Lesson 43: Global Server Load Balancing](2026-05-14-Global-Server-Load-Balancing.md)
 
 ## References
 

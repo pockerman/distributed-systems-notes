@@ -1,4 +1,4 @@
-# Lesson 23: State Machine Replication
+# Lesson 22: State Machine Replication
 
 ## Overview
 
@@ -10,7 +10,7 @@ discussion of data replication. In fact, the Raft replication algorithm is based
 State machine replication works under a simple principle: if two identical, deterministic processes begin in the same state and receive the same inputs in the same order, they will
 produce the same output and reach the same state [4].
 
-For our purposes, we can view state machine replication as another replication strategy (see [Lesson 21: Replication Strategies](2025-04-22-data-replication.md)).
+For our purposes, we can view state machine replication as another replication strategy (see [Lesson 20: Replication Strategies](2025-04-22-data-replication.md)).
 
 ## State machine replication
 

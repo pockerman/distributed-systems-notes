@@ -1,8 +1,8 @@
-# Lesson 22: Consistency Models
+# Lesson 21: Consistency Models
 
 ## Overview
 
-In [Lesson 21: Replication Strategies](2025-04-22-data-replication.md) we discussed data replication
+In [Lesson 20: Replication Strategies](2025-04-22-data-replication.md) we discussed data replication
 as a means of increasing a system's availability and improving its performance. Data replication refers to maintaining multiple copies of the same
 data in such a way that client applications perceive them as a single object. This is referred to as _replication transparency_.
 

@@ -1,4 +1,4 @@
-# Lesson 60: Distributed Transactions: Two-Phase and Three-Phase Commit
+# Lesson 59: Distributed Transactions: Two-Phase and Three-Phase Commit
 
 ::: {.callout-warning title="Work in progress"}
 This lesson has not been written yet. The outline below lists what it should cover.
@@ -19,9 +19,9 @@ Once data is partitioned, one business operation may need to update several part
 
 ## Related lessons
 
-- [Lesson 28: Partitioning](../2025-08-04-partitioning.md)
-- [Lesson 29: SQL Isolation Levels](../2026-08-20-SQL-ISOLATION-LEVELS.md)
-- [Lesson 24: Consensus](../2025-12-31-consensus.md)
+- [Lesson 27: Partitioning](../2025-08-04-partitioning.md)
+- [Lesson 28: SQL Isolation Levels](../2026-08-20-SQL-ISOLATION-LEVELS.md)
+- [Lesson 23: Consensus](../2025-12-31-consensus.md)
 
 ## References
 

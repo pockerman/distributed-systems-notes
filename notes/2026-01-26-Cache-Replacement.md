@@ -1,8 +1,8 @@
-# Lesson 19: Cache Replacement
+# Lesson 18: Cache Replacement
 
 ## Overview
 
-[Lesson 18: Cache Coherence](2026-01-21-cache-coherency.md) discussed
+[Lesson 17: Cache Coherence](2026-01-21-cache-coherency.md) discussed
 cache coherence, i.e. how multiple caches can maintain a uniform view of the cached data. A cache, however, has a limited capacity, and when this
 capacity is reached we must decide what to remove. In this lesson we review some [cache replacement policies](https://en.wikipedia.org/wiki/Cache_replacement_policies):
 

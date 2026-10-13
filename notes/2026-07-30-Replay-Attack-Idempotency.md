@@ -1,4 +1,4 @@
-# Lesson 40: Replay Attack vs Idempotency Issues
+# Lesson 39: Replay Attack vs Idempotency Issues
 
 ## Overview
 

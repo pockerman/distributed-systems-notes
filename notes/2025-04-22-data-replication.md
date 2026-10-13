@@ -1,4 +1,4 @@
-# Lesson 21: Replication Strategies
+# Lesson 20: Replication Strategies
 
 ## Overview
 
@@ -8,7 +8,7 @@ In this series of lessons we go over the essential elements of data replication.
 - Replication strategies (this lesson)
 - [Consistency models](2025-04-28-consistency-models.md)
 - [State machine replication](2025-12-30-state-machine-replication.md)
-- [Lesson 24: Consensus](2025-12-31-consensus.md)
+- [Lesson 23: Consensus](2025-12-31-consensus.md)
 - [Broadcast protocols](https://github.com/pockerman/qubit-notes/blob/main/software_engineering/2026-01-05-broadcast-protocols.md)
 - [PACELC, CAP and CALM theorems](2026-01-06-pacelc-cap-calm-theorems.md)
 
@@ -53,7 +53,7 @@ Just like multi-leader systems, this creates conflicts that we need to detect an
 - Operational Transformation (OT)
 - Conflict-free Replicated Data Types (CRDTs)
 
-See [Lesson 26: Common Conflict Resolution Strategies](2026-06-29-Common-Conflict-Resolution-Strategies.md) for more details. The next lesson discusses [consistency models](2025-04-28-consistency-models.md).
+See [Lesson 25: Common Conflict Resolution Strategies](2026-06-29-Common-Conflict-Resolution-Strategies.md) for more details. The next lesson discusses [consistency models](2025-04-28-consistency-models.md).
 
 ## Summary
 

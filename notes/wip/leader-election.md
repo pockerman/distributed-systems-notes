@@ -1,4 +1,4 @@
-# Lesson 58: Leader Election
+# Lesson 57: Leader Election
 
 ::: {.callout-warning title="Work in progress"}
 This lesson has not been written yet. The outline below lists what it should cover.
@@ -19,9 +19,9 @@ Many systems need exactly one node to do a job: accept writes, run a scheduled t
 
 ## Related lessons
 
-- [Lesson 24: Consensus](../2025-12-31-consensus.md)
-- [Lesson 23: State Machine Replication](../2025-12-30-state-machine-replication.md)
-- [Lesson 21: Replication Strategies](../2025-04-22-data-replication.md)
+- [Lesson 23: Consensus](../2025-12-31-consensus.md)
+- [Lesson 22: State Machine Replication](../2025-12-30-state-machine-replication.md)
+- [Lesson 20: Replication Strategies](../2025-04-22-data-replication.md)
 
 ## References
 

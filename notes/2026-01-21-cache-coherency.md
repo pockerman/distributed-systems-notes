@@ -1,4 +1,4 @@
-# Lesson 18: Cache Coherence
+# Lesson 17: Cache Coherence
 
 ## Overview
 

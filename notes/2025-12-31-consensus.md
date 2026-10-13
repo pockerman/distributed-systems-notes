@@ -1,4 +1,4 @@
-# Lesson 24: Consensus
+# Lesson 23: Consensus
 
 ## Overview
 

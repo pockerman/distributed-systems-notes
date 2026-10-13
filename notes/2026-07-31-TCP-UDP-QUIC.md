@@ -37,7 +37,7 @@ In simple terms, QUIC is a next-generation TCP implemented over UDP, with encryp
 
 One of QUIC's big advantages is connection setup.
 QUIC integrates the transport handshake and the TLS 1.3 handshake into a single step, so a new connection is established in one round trip (1-RTT), compared to two round trips for TCP plus TLS 1.3 (and three with TLS 1.2).
-When a client reconnects to a server it has talked to before, it can even send data in its very first packet (0-RTT). Note that 0-RTT data can be replayed by an attacker, so it should only be used for idempotent requests (see [Lesson 40: Replay Attack vs Idempotency Issues](2026-07-30-Replay-Attack-Idempotency.md)).
+When a client reconnects to a server it has talked to before, it can even send data in its very first packet (0-RTT). Note that 0-RTT data can be replayed by an attacker, so it should only be used for idempotent requests (see [Lesson 39: Replay Attack vs Idempotency Issues](2026-07-30-Replay-Attack-Idempotency.md)).
 The result is lower latency, which is especially beneficial for web pages and API calls.
 
 ### Encryption by default

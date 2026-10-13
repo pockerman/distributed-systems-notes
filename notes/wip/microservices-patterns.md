@@ -1,4 +1,4 @@
-# Lesson 74: Microservices Patterns
+# Lesson 73: Microservices Patterns
 
 ::: {.callout-warning title="Work in progress"}
 This lesson has not been written yet. The outline below lists what it should cover.
@@ -19,9 +19,9 @@ Splitting a monolith into services solves some problems and creates others. This
 
 ## Related lessons
 
-- [Lesson 43: Container Design Patterns for Distributed Systems](2026-05-08-Container-Design-Patterns-Distributed-Systems.md)
-- [Lesson 66: API Gateways and Service Discovery](api-gateway-and-service-discovery.md)
-- [Lesson 61: Sagas, the Transactional Outbox and Change Data Capture](sagas-outbox-cdc.md)
+- [Lesson 42: Container Design Patterns for Distributed Systems](2026-05-08-Container-Design-Patterns-Distributed-Systems.md)
+- [Lesson 65: API Gateways and Service Discovery](api-gateway-and-service-discovery.md)
+- [Lesson 60: Sagas, the Transactional Outbox and Change Data Capture](sagas-outbox-cdc.md)
 
 ## References
 

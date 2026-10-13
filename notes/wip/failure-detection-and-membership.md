@@ -1,4 +1,4 @@
-# Lesson 57: Failure Detection and Group Membership
+# Lesson 56: Failure Detection and Group Membership
 
 ::: {.callout-warning title="Work in progress"}
 This lesson has not been written yet. The outline below lists what it should cover.
@@ -20,8 +20,8 @@ In an asynchronous network we cannot tell a crashed node from a slow one. Failur
 ## Related lessons
 
 - [Lesson 2: Challenges in Distributed Systems](../2026-03-09-part-2-Challenges.md)
-- [Lesson 37: Liveness and Readiness Checks](../2026-05-13-Liveness-Readiness-Checks.md)
-- [Lesson 27: Read Repair, Hinted Handoff & Anti-entropy in Eventually Consistent Systems](../2026-07-01-Read-Repair-Hinted-Handoff-Anti-entropy-Eventually-Consistent-Systems.md)
+- [Lesson 36: Liveness and Readiness Checks](../2026-05-13-Liveness-Readiness-Checks.md)
+- [Lesson 26: Read Repair, Hinted Handoff & Anti-entropy in Eventually Consistent Systems](../2026-07-01-Read-Repair-Hinted-Handoff-Anti-entropy-Eventually-Consistent-Systems.md)
 
 ## References
 

@@ -1,4 +1,4 @@
-# Lesson 76: Design a News Feed
+# Lesson 75: Design a News Feed
 
 ::: {.callout-warning title="Work in progress"}
 This lesson has not been written yet. The outline below lists what it should cover.
@@ -19,9 +19,9 @@ Show each user a timeline of posts from the people they follow. The main decisio
 
 ## Related lessons
 
-- [Lesson 62: Message Queues and Event Logs](message-queues-and-logs.md)
-- [Lesson 17: Caching Methods](../2026-01-20-Caching.md)
-- [Lesson 16: Sharded Counters](../2025-08-11-sharded-counters.md)
+- [Lesson 61: Message Queues and Event Logs](message-queues-and-logs.md)
+- [Lesson 16: Caching Methods](../2026-01-20-Caching.md)
+- [Lesson 15: Sharded Counters](../2025-08-11-sharded-counters.md)
 
 ## References
 

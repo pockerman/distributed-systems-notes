@@ -1,4 +1,4 @@
-# Lesson 77: Design a Chat System
+# Lesson 76: Design a Chat System
 
 ::: {.callout-warning title="Work in progress"}
 This lesson has not been written yet. The outline below lists what it should cover.
@@ -20,8 +20,8 @@ Deliver messages between users in real time, keep history, and show who is onlin
 ## Related lessons
 
 - [Short Polling, Long Polling, SSE & WebSocket](../impl_details/Short-long-polling-SSE-WebSocket.md)
-- [Lesson 56: Logical Clocks](logical-clocks.md)
-- [Lesson 57: Failure Detection and Group Membership](failure-detection-and-membership.md)
+- [Lesson 55: Logical Clocks](logical-clocks.md)
+- [Lesson 56: Failure Detection and Group Membership](failure-detection-and-membership.md)
 
 ## References
 

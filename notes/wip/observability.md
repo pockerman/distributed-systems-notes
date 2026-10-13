@@ -1,4 +1,4 @@
-# Lesson 69: Observability: Logs, Metrics and Traces
+# Lesson 68: Observability: Logs, Metrics and Traces
 
 ::: {.callout-warning title="Work in progress"}
 This lesson has not been written yet. The outline below lists what it should cover.
@@ -20,7 +20,7 @@ In a distributed system a single request touches many machines. Observability is
 ## Related lessons
 
 - [Lesson 2: Challenges in Distributed Systems](../2026-03-09-part-2-Challenges.md)
-- [Lesson 32: Failure Causes](../2026-01-28-Failure-Causes.md)
+- [Lesson 31: Failure Causes](../2026-01-28-Failure-Causes.md)
 
 ## References
 

@@ -1,4 +1,4 @@
-# Lesson 63: Idempotency
+# Lesson 62: Idempotency
 
 ::: {.callout-warning title="Work in progress"}
 This lesson has not been written yet. The outline below lists what it should cover.
@@ -19,9 +19,9 @@ Retries, at-least-once delivery and impatient users all lead to the same request
 
 ## Related lessons
 
-- [Lesson 40: Replay Attack vs Idempotency Issues](../2026-07-30-Replay-Attack-Idempotency.md)
-- [Lesson 33: Downstream Resiliency](../2026-02-04-Downstream-Resiliency.md)
-- [Lesson 46: Message Delivery Semantics](2026-06-08-Scalability-Message-Delivery-Semantics.md)
+- [Lesson 39: Replay Attack vs Idempotency Issues](../2026-07-30-Replay-Attack-Idempotency.md)
+- [Lesson 32: Downstream Resiliency](../2026-02-04-Downstream-Resiliency.md)
+- [Lesson 45: Message Delivery Semantics](2026-06-08-Scalability-Message-Delivery-Semantics.md)
 
 ## References
 

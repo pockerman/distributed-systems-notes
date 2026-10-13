@@ -1,4 +1,4 @@
-# Lesson 13: Forward Proxy, Reverse Proxy & NAT
+# Lesson 12: Forward Proxy, Reverse Proxy & NAT
 
 ## Overview
 
@@ -36,7 +36,7 @@ To the client, the reverse proxy appears to be the web server itself; the client
 Reverse proxies protect and optimize the server side.
 Because clients never communicate directly with the origin servers, a reverse proxy adds a layer of security and performance. Common uses include:
 
-- **Load balancing:** distributing incoming requests across multiple servers so that no single server is overwhelmed (see [Lesson 35: Load Balancing](2025-04-21-load-balancing.md)).
+- **Load balancing:** distributing incoming requests across multiple servers so that no single server is overwhelmed (see [Lesson 34: Load Balancing](2025-04-21-load-balancing.md)).
 - **Caching:** serving cached responses for static or frequent requests, reducing the load on the backend.
 - **TLS termination:** handling the encryption and decryption of HTTPS traffic, taking that work off the backend servers.
 - **Security:** hiding the identity and structure of the backend; clients only know the proxy's address. This protects the actual servers from direct attacks, e.g. the reverse proxy can absorb DDoS traffic or block malicious requests.

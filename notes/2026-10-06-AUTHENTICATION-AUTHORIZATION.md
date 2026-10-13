@@ -1,4 +1,4 @@
-# Lesson 38: Authentication & Authorization for APIs
+# Lesson 37: Authentication & Authorization for APIs
 
 ## Overview
 

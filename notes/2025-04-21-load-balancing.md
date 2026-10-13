@@ -1,4 +1,4 @@
-# Lesson 35: Load Balancing
+# Lesson 34: Load Balancing
 
 ## Overview
 

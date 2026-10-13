@@ -1,4 +1,4 @@
-# Lesson 14: Little's Law
+# Lesson 13: Little's Law
 
 ## Overview
 

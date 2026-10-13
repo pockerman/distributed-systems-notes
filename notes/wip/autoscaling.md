@@ -1,4 +1,4 @@
-# Lesson 68: Autoscaling
+# Lesson 67: Autoscaling
 
 ::: {.callout-warning title="Work in progress"}
 This lesson has not been written yet. The outline below lists what it should cover.
@@ -19,9 +19,9 @@ Load changes through the day, and paying for peak capacity all the time is waste
 
 ## Related lessons
 
-- [Lesson 14: Little's Law](../2026-05-18-Scalability-Little-Law.md)
-- [Lesson 15: Cold & Warm Starts](../2026-05-20-Scalability-Cold-Warm-Starts.md)
-- [Lesson 34: Upstream Resiliency](../2026-02-09-Upstream-Resiliency.md)
+- [Lesson 13: Little's Law](../2026-05-18-Scalability-Little-Law.md)
+- [Lesson 14: Cold & Warm Starts](../2026-05-20-Scalability-Cold-Warm-Starts.md)
+- [Lesson 33: Upstream Resiliency](../2026-02-09-Upstream-Resiliency.md)
 
 ## References
 

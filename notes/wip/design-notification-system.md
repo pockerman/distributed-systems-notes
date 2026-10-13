@@ -1,4 +1,4 @@
-# Lesson 79: Design a Notification System
+# Lesson 78: Design a Notification System
 
 ::: {.callout-warning title="Work in progress"}
 This lesson has not been written yet. The outline below lists what it should cover.
@@ -19,9 +19,9 @@ Send push, SMS and email notifications reliably, without sending the same notifi
 
 ## Related lessons
 
-- [Lesson 62: Message Queues and Event Logs](message-queues-and-logs.md)
-- [Lesson 63: Idempotency](idempotency.md)
-- [Lesson 42: Design a Rate Limiter](../2026-05-21-Resiliency-Hands-On-Design-Rate-Limiter.md)
+- [Lesson 61: Message Queues and Event Logs](message-queues-and-logs.md)
+- [Lesson 62: Idempotency](idempotency.md)
+- [Lesson 41: Design a Rate Limiter](../2026-05-21-Resiliency-Hands-On-Design-Rate-Limiter.md)
 
 ## References
 

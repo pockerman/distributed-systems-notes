@@ -1,4 +1,4 @@
-# Lesson 70: SLIs, SLOs and Error Budgets
+# Lesson 69: SLIs, SLOs and Error Budgets
 
 ::: {.callout-warning title="Work in progress"}
 This lesson has not been written yet. The outline below lists what it should cover.
@@ -19,8 +19,8 @@ We cannot make a system 100% reliable, and trying to would stop us shipping. Ser
 
 ## Related lessons
 
-- [Lesson 69: Observability: Logs, Metrics and Traces](observability.md)
-- [Lesson 32: Failure Causes](../2026-01-28-Failure-Causes.md)
+- [Lesson 68: Observability: Logs, Metrics and Traces](observability.md)
+- [Lesson 31: Failure Causes](../2026-01-28-Failure-Causes.md)
 
 ## References
 

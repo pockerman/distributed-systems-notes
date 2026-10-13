@@ -1,4 +1,4 @@
-# Lesson 16: Sharded Counters
+# Lesson 15: Sharded Counters
 
 ## Overview
 

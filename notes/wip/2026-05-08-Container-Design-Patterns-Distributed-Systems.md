@@ -1,4 +1,4 @@
-# Lesson 43: Container Design Patterns for Distributed Systems
+# Lesson 42: Container Design Patterns for Distributed Systems
 
 ::: {.callout-warning title="Work in progress"}
 This lesson is a stub.

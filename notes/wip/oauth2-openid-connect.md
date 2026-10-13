@@ -1,4 +1,4 @@
-# Lesson 72: OAuth 2.0 and OpenID Connect
+# Lesson 71: OAuth 2.0 and OpenID Connect
 
 ::: {.callout-warning title="Work in progress"}
 This lesson has not been written yet. The outline below lists what it should cover.
@@ -19,8 +19,8 @@ OAuth 2.0 lets a user grant an application limited access to their data on anoth
 
 ## Related lessons
 
-- [Lesson 38: Authentication & Authorization for APIs](../2026-10-06-AUTHENTICATION-AUTHORIZATION.md)
-- [Lesson 39: Server-Stored Sessions vs JWTs for Authentication](../2026-07-16-Security-Server-Stored-Session-vs-JWT.md)
+- [Lesson 37: Authentication & Authorization for APIs](../2026-10-06-AUTHENTICATION-AUTHORIZATION.md)
+- [Lesson 38: Server-Stored Sessions vs JWTs for Authentication](../2026-07-16-Security-Server-Stored-Session-vs-JWT.md)
 
 ## References
 

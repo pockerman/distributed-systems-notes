@@ -1,8 +1,8 @@
-# Lesson 34: Upstream Resiliency
+# Lesson 33: Upstream Resiliency
 
 ## Overview
 
-In [Lesson 33: Downstream Resiliency](2026-02-04-Downstream-Resiliency.md) we discussed
+In [Lesson 32: Downstream Resiliency](2026-02-04-Downstream-Resiliency.md) we discussed
 techniques for handling downstream failures, i.e. failures caused by an
 interaction with another service.
 
@@ -50,7 +50,7 @@ The text above uses the terms rate limiting, throttling, and quotas somewhat int
 Technically, they are different. See [Difference between Rate Limiting and Throttling and Quotas](https://github.com/pockerman/qubit-notes/blob/main/software_engineering/2026-05-06-API-Basics-Diff-Rate-Limit-Throttling-Quotas.md).
 :::
 
-We discuss rate limiting further in [Lesson 42: Design a Rate Limiter](2026-05-21-Resiliency-Hands-On-Design-Rate-Limiter.md).
+We discuss rate limiting further in [Lesson 41: Design a Rate Limiter](2026-05-21-Resiliency-Hands-On-Design-Rate-Limiter.md).
 
 ### Bulkhead
 

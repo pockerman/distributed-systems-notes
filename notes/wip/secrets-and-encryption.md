@@ -1,4 +1,4 @@
-# Lesson 73: Secrets Management and Encryption at Rest
+# Lesson 72: Secrets Management and Encryption at Rest
 
 ::: {.callout-warning title="Work in progress"}
 This lesson has not been written yet. The outline below lists what it should cover.
@@ -20,8 +20,8 @@ Services need passwords, API keys and certificates, and the data they store must
 ## Related lessons
 
 - [Lesson 7: TLS 101](../2026-04-06-Part-5-TLS-101.md)
-- [Lesson 47: TLS vs mTLS](2026-07-25-TLS-mTLS.md)
-- [Lesson 38: Authentication & Authorization for APIs](../2026-10-06-AUTHENTICATION-AUTHORIZATION.md)
+- [Lesson 46: TLS vs mTLS](2026-07-25-TLS-mTLS.md)
+- [Lesson 37: Authentication & Authorization for APIs](../2026-10-06-AUTHENTICATION-AUTHORIZATION.md)
 
 ## References
 

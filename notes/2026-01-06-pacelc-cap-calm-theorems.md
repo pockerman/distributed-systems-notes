@@ -1,4 +1,4 @@
-# Lesson 25: PACELC, CAP and CALM Theorems
+# Lesson 24: PACELC, CAP and CALM Theorems
 
 ## Overview
 

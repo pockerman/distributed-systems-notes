@@ -1,4 +1,4 @@
-# Lesson 28: Partitioning
+# Lesson 27: Partitioning
 
 ## Overview
 

@@ -1,4 +1,4 @@
-# Lesson 65: Storage Engines: B-Trees and LSM-Trees
+# Lesson 64: Storage Engines: B-Trees and LSM-Trees
 
 ::: {.callout-warning title="Work in progress"}
 This lesson has not been written yet. The outline below lists what it should cover.
@@ -19,8 +19,8 @@ How a database lays data out on disk decides how fast it reads, writes and recov
 
 ## Related lessons
 
-- [Lesson 31: Write-Ahead Log](../2026-08-21-WRITE-AHEAD-LOG.md)
-- [Lesson 30: Multi-Version Concurrency Control](../2026-09-09-Multi-Version-Concurrency-Control.md)
+- [Lesson 30: Write-Ahead Log](../2026-08-21-WRITE-AHEAD-LOG.md)
+- [Lesson 29: Multi-Version Concurrency Control](../2026-09-09-Multi-Version-Concurrency-Control.md)
 
 ## References
 

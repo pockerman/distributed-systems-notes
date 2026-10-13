@@ -1,4 +1,4 @@
-# Lesson 61: Sagas, the Transactional Outbox and Change Data Capture
+# Lesson 60: Sagas, the Transactional Outbox and Change Data Capture
 
 ::: {.callout-warning title="Work in progress"}
 This lesson has not been written yet. The outline below lists what it should cover.
@@ -19,9 +19,9 @@ Between microservices, two-phase commit is usually too slow or not available. Sa
 
 ## Related lessons
 
-- [Lesson 60: Distributed Transactions: Two-Phase and Three-Phase Commit](two-phase-commit.md)
-- [Lesson 31: Write-Ahead Log](../2026-08-21-WRITE-AHEAD-LOG.md)
-- [Lesson 46: Message Delivery Semantics](2026-06-08-Scalability-Message-Delivery-Semantics.md)
+- [Lesson 59: Distributed Transactions: Two-Phase and Three-Phase Commit](two-phase-commit.md)
+- [Lesson 30: Write-Ahead Log](../2026-08-21-WRITE-AHEAD-LOG.md)
+- [Lesson 45: Message Delivery Semantics](2026-06-08-Scalability-Message-Delivery-Semantics.md)
 
 ## References
 

@@ -1,4 +1,4 @@
-# Lesson 59: Distributed Locks and Leases
+# Lesson 58: Distributed Locks and Leases
 
 ::: {.callout-warning title="Work in progress"}
 This lesson has not been written yet. The outline below lists what it should cover.
@@ -19,9 +19,9 @@ A lock across machines must cope with clients that pause, crash or lose their ne
 
 ## Related lessons
 
-- [Lesson 24: Consensus](../2025-12-31-consensus.md)
-- [Lesson 55: Physical Clocks and Time Synchronization](physical-clocks-and-time-synchronization.md)
-- [Lesson 58: Leader Election](leader-election.md)
+- [Lesson 23: Consensus](../2025-12-31-consensus.md)
+- [Lesson 54: Physical Clocks and Time Synchronization](physical-clocks-and-time-synchronization.md)
+- [Lesson 57: Leader Election](leader-election.md)
 
 ## References
 

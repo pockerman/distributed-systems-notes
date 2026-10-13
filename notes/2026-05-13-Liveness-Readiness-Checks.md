@@ -1,4 +1,4 @@
-# Lesson 37: Liveness and Readiness Checks
+# Lesson 36: Liveness and Readiness Checks
 
 ## Overview
 

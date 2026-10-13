@@ -1,4 +1,4 @@
-# Lesson 20: Negative Caching
+# Lesson 19: Negative Caching
 
 ## Overview
 

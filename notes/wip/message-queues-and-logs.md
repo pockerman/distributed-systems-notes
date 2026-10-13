@@ -1,4 +1,4 @@
-# Lesson 62: Message Queues and Event Logs
+# Lesson 61: Message Queues and Event Logs
 
 ::: {.callout-warning title="Work in progress"}
 This lesson has not been written yet. The outline below lists what it should cover.
@@ -19,9 +19,9 @@ Message brokers decouple producers from consumers and absorb load spikes. This l
 
 ## Related lessons
 
-- [Lesson 46: Message Delivery Semantics](2026-06-08-Scalability-Message-Delivery-Semantics.md)
-- [Lesson 34: Upstream Resiliency](../2026-02-09-Upstream-Resiliency.md)
-- [Lesson 31: Write-Ahead Log](../2026-08-21-WRITE-AHEAD-LOG.md)
+- [Lesson 45: Message Delivery Semantics](2026-06-08-Scalability-Message-Delivery-Semantics.md)
+- [Lesson 33: Upstream Resiliency](../2026-02-09-Upstream-Resiliency.md)
+- [Lesson 30: Write-Ahead Log](../2026-08-21-WRITE-AHEAD-LOG.md)
 
 ## References
 

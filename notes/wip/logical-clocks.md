@@ -1,4 +1,4 @@
-# Lesson 56: Logical Clocks
+# Lesson 55: Logical Clocks
 
 ::: {.callout-warning title="Work in progress"}
 This lesson has not been written yet. The outline below lists what it should cover.
@@ -19,8 +19,8 @@ When physical clocks cannot be trusted, we can still order events by causality. 
 
 ## Related lessons
 
-- [Lesson 26: Common Conflict Resolution Strategies](../2026-06-29-Common-Conflict-Resolution-Strategies.md)
-- [Lesson 22: Consistency Models](../2025-04-28-consistency-models.md)
+- [Lesson 25: Common Conflict Resolution Strategies](../2026-06-29-Common-Conflict-Resolution-Strategies.md)
+- [Lesson 21: Consistency Models](../2025-04-28-consistency-models.md)
 
 ## References
 

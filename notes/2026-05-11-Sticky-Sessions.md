@@ -1,4 +1,4 @@
-# Lesson 36: Sticky Sessions
+# Lesson 35: Sticky Sessions
 
 ## Overview
 

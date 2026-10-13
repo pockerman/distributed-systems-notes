@@ -1,4 +1,4 @@
-# Lesson 64: Conflict-Free Replicated Data Types
+# Lesson 63: Conflict-Free Replicated Data Types
 
 ::: {.callout-warning title="Work in progress"}
 This lesson has not been written yet. The outline below lists what it should cover.
@@ -19,9 +19,9 @@ CRDTs are data types whose replicas can be updated independently and always merg
 
 ## Related lessons
 
-- [Lesson 26: Common Conflict Resolution Strategies](../2026-06-29-Common-Conflict-Resolution-Strategies.md)
-- [Lesson 25: PACELC, CAP and CALM Theorems](../2026-01-06-pacelc-cap-calm-theorems.md)
-- [Lesson 56: Logical Clocks](logical-clocks.md)
+- [Lesson 25: Common Conflict Resolution Strategies](../2026-06-29-Common-Conflict-Resolution-Strategies.md)
+- [Lesson 24: PACELC, CAP and CALM Theorems](../2026-01-06-pacelc-cap-calm-theorems.md)
+- [Lesson 55: Logical Clocks](logical-clocks.md)
 
 ## References
 

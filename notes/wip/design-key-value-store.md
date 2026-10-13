@@ -1,4 +1,4 @@
-# Lesson 78: Design a Distributed Key-Value Store
+# Lesson 77: Design a Distributed Key-Value Store
 
 ::: {.callout-warning title="Work in progress"}
 This lesson has not been written yet. The outline below lists what it should cover.
@@ -19,9 +19,9 @@ A capstone exercise that puts together partitioning, replication, quorums, confl
 
 ## Related lessons
 
-- [Lesson 28: Partitioning](../2025-08-04-partitioning.md)
-- [Lesson 21: Replication Strategies](../2025-04-22-data-replication.md)
-- [Lesson 27: Read Repair, Hinted Handoff & Anti-entropy in Eventually Consistent Systems](../2026-07-01-Read-Repair-Hinted-Handoff-Anti-entropy-Eventually-Consistent-Systems.md)
+- [Lesson 27: Partitioning](../2025-08-04-partitioning.md)
+- [Lesson 20: Replication Strategies](../2025-04-22-data-replication.md)
+- [Lesson 26: Read Repair, Hinted Handoff & Anti-entropy in Eventually Consistent Systems](../2026-07-01-Read-Repair-Hinted-Handoff-Anti-entropy-Eventually-Consistent-Systems.md)
 
 ## References
 

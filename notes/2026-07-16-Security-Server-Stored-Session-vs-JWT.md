@@ -1,4 +1,4 @@
-# Lesson 39: Server-Stored Sessions vs JWTs for Authentication
+# Lesson 38: Server-Stored Sessions vs JWTs for Authentication
 
 ## Overview
 
@@ -96,7 +96,7 @@ The choice depends on the application:
 Server-stored sessions keep authentication state on the server and give the client an opaque session ID; they are simple, small, and easy to revoke, but need a shared session store (or sticky sessions) to scale and must be protected against CSRF. JWTs carry signed claims in the token itself, so any service can verify them locally without a lookup; they scale well and suit APIs, microservices, mobile apps, and SSO, but they are hard to revoke before expiry, larger, readable by anyone holding them, and easy to misconfigure. Short-lived access tokens with refresh tokens, or hybrid designs, combine the strengths of both.
 :::
 
-See also [Lesson 38: Authentication & Authorization for APIs](2026-10-06-AUTHENTICATION-AUTHORIZATION.md).
+See also [Lesson 37: Authentication & Authorization for APIs](2026-10-06-AUTHENTICATION-AUTHORIZATION.md).
 
 ## References
 

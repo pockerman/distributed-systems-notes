@@ -1,4 +1,4 @@
-# Lesson 51: Checksums & ETags
+# Lesson 50: Checksums & ETags
 
 ::: {.callout-warning title="Work in progress"}
 This lesson is incomplete.

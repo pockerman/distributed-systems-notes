@@ -1,4 +1,4 @@
-# Lesson 26: Common Conflict Resolution Strategies
+# Lesson 25: Common Conflict Resolution Strategies
 
 ## Overview
 
@@ -10,7 +10,7 @@ In this lesson we review the following strategies [1]:
 - Vector clocks
 - Logical (Lamport) clocks
 
-See also [Lesson 21: Replication Strategies](2025-04-22-data-replication.md).
+See also [Lesson 20: Replication Strategies](2025-04-22-data-replication.md).
 
 ## Common conflict resolution strategies
 
